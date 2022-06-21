@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -62,7 +64,45 @@
 		<Unit filename="ColeccionesG/NodoDicc.h" />
 		<Unit filename="ColeccionesG/Par.cpp" />
 		<Unit filename="ColeccionesG/Par.h" />
+		<Unit filename="include/CategoriaDeVideojuegos.h" />
+		<Unit filename="include/CategoriaGenero.h" />
+		<Unit filename="include/CategoriaPlataforma.h" />
+		<Unit filename="include/Desarrollador.h" />
+		<Unit filename="include/IUsers.h" />
+		<Unit filename="include/Individual.h" />
+		<Unit filename="include/Jugador.h" />
+		<Unit filename="include/Multijugador.h" />
+		<Unit filename="include/NuevaCategoria.h" />
+		<Unit filename="include/NuevaPlataforma.h" />
+		<Unit filename="include/NuevoGenero.h" />
+		<Unit filename="include/Partida.h" />
+		<Unit filename="include/PorDefectoGenero.h" />
+		<Unit filename="include/PorDefectoPlataforma.h" />
+		<Unit filename="include/Suscripcion.h" />
+		<Unit filename="include/Temporal.h" />
+		<Unit filename="include/Usuario.h" />
+		<Unit filename="include/Videojuego.h" />
+		<Unit filename="include/Vitalicia.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/CategoriaDeVideojuegos.cpp" />
+		<Unit filename="src/CategoriaGenero.cpp" />
+		<Unit filename="src/CategoriaPlataforma.cpp" />
+		<Unit filename="src/Desarrollador.cpp" />
+		<Unit filename="src/IUsers.cpp" />
+		<Unit filename="src/Individual.cpp" />
+		<Unit filename="src/Jugador.cpp" />
+		<Unit filename="src/Multijugador.cpp" />
+		<Unit filename="src/NuevaCategoria.cpp" />
+		<Unit filename="src/NuevaPlataforma.cpp" />
+		<Unit filename="src/NuevoGenero.cpp" />
+		<Unit filename="src/Partida.cpp" />
+		<Unit filename="src/PorDefectoGenero.cpp" />
+		<Unit filename="src/PorDefectoPlataforma.cpp" />
+		<Unit filename="src/Suscripcion.cpp" />
+		<Unit filename="src/Temporal.cpp" />
+		<Unit filename="src/Usuario.cpp" />
+		<Unit filename="src/Videojuego.cpp" />
+		<Unit filename="src/Vitalicia.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
