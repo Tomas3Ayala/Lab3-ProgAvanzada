@@ -2,7 +2,7 @@
 #define USUARIO_H
 #include "StandardHeaders.h"
 
-class Usuario
+class Usuario : public ICollectible
 {
     public:
         Usuario();
@@ -16,6 +16,7 @@ class Usuario
     protected:
 
     private:
+        ICollection* suscripciones;
         string email;
         string contrasenia;
 };

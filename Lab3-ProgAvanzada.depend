@@ -277,3 +277,288 @@
 1655858053 c:\users\tomas\documents\github\lab3-progavanzada\include\pordefectoplataforma.h
 	<CategoriaPlataforma.h>
 
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\icollectible.cpp
+	"ICollectible.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\icollectible.h
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\idictionary.cpp
+	"IDictionary.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\idictionary.h
+	"ICollectible.h"
+	"IKey.h"
+	"IIterator.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\ikey.h
+	"ICollectible.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\iiterator.h
+	"ICollectible.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\ikey.cpp
+	"IKey.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\keyint.cpp
+	"KeyInt.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\keyint.h
+	"IKey.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\keystring.cpp
+	"KeyString.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\keystring.h
+	"IKey.h"
+	<string>
+	<iostream>
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\lista.cpp
+	"Lista.h"
+	<string.h>
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\lista.h
+	"ICollection.h"
+	"Nodo.h"
+	"ListaIterator.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\icollection.h
+	<string>
+	"IIterator.h"
+	"ICollectible.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\nodo.h
+	"ICollectible.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listaiterator.h
+	"IIterator.h"
+	"Nodo.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listadicc.cpp
+	"ListaDicc.h"
+	"ListDiccIteratorObj.h"
+	<string>
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listadicc.h
+	"NodoDicc.h"
+	"IIterator.h"
+	"ICollectible.h"
+	"IDictionary.h"
+	"ListDiccIterator.h"
+	"ListDiccIteratorObj.h"
+	"ListDiccIteratorKey.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\nododicc.h
+	"ICollectible.h"
+	"Par.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\par.h
+	"ICollectible.h"
+	"IKey.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciterator.h
+	"NodoDicc.h"
+	"ICollectible.h"
+	"IIterator.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciteratorobj.h
+	"ListDiccIterator.h"
+	"NodoDicc.h"
+
+1655777539 c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciteratorkey.h
+	"ListDiccIterator.h"
+	"NodoDicc.h"
+	"ICollectible.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listaiterator.cpp
+	"ListaIterator.h"
+	"stdio.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciterator.cpp
+	"ListDiccIterator.h"
+	"stdio.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciteratorkey.cpp
+	"ListDiccIteratorKey.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\listdicciteratorobj.cpp
+	"ListDiccIteratorObj.h"
+	"Par.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\nodo.cpp
+	"Nodo.h"
+	"stdio.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\nododicc.cpp
+	"NodoDicc.h"
+	"stdio.h"
+
+1655777539 source:c:\users\59892\documents\github\lab3-progavanzada\coleccionesg\par.cpp
+	"Par.h"
+	<stdlib.h>
+
+1655777623 source:c:\users\59892\documents\github\lab3-progavanzada\main.cpp
+	<iostream>
+
+1655840549 source:c:\users\59892\documents\github\lab3-progavanzada\src\categoriadevideojuegos.cpp
+	"CategoriaDeVideojuegos.h"
+
+1655861753 c:\users\59892\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
+	"StandardHeaders.h"
+
+1655859871 c:\users\59892\documents\github\lab3-progavanzada\include\standardheaders.h
+	<iostream>
+	<vector>
+	<string>
+	"../ColeccionesG/ICollection.h"
+
+1655840602 source:c:\users\59892\documents\github\lab3-progavanzada\src\categoriagenero.cpp
+	"CategoriaGenero.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\categoriagenero.h
+	<CategoriaDeVideojuegos.h>
+
+1655840633 source:c:\users\59892\documents\github\lab3-progavanzada\src\categoriaplataforma.cpp
+	"CategoriaPlataforma.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\categoriaplataforma.h
+	"CategoriaDeVideojuegos.h"
+
+1655839810 source:c:\users\59892\documents\github\lab3-progavanzada\src\desarrollador.cpp
+	"Desarrollador.h"
+
+1655839809 c:\users\59892\documents\github\lab3-progavanzada\include\desarrollador.h
+	<Usuario.h>
+
+1655861753 c:\users\59892\documents\github\lab3-progavanzada\include\usuario.h
+	"StandardHeaders.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\dtcomentariorealizado.cpp
+	"DtComentarioRealizado.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\dtcomentariorealizado.h
+	"DtFechaHora.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\dtfechahora.h
+	"StandardHeaders.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\dtcostosuscripcion.cpp
+	"DtCostoSuscripcion.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\dtcostosuscripcion.h
+	"StandardHeaders.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\dtfechahora.cpp
+	"DtFechaHora.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\dtpartidainfo.cpp
+	"DtPartidaInfo.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\dtpartidainfo.h
+	"StandardHeaders.h"
+
+1655841007 source:c:\users\59892\documents\github\lab3-progavanzada\src\individual.cpp
+	"Individual.h"
+
+1655841007 c:\users\59892\documents\github\lab3-progavanzada\include\individual.h
+	<Partida.h>
+
+1655861942 c:\users\59892\documents\github\lab3-progavanzada\include\partida.h
+	"DtFechaHora.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\ipartidas.cpp
+	"IPartidas.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\ipartidas.h
+	"StandardHeaders.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\iusers.cpp
+	"IUsers.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\iusers.h
+	"DtCostoSuscripcion.h"
+
+1655859871 source:c:\users\59892\documents\github\lab3-progavanzada\src\ivideojuegos.cpp
+	"IVideojuegos.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\ivideojuegos.h
+	"StandardHeaders.h"
+
+1655839664 source:c:\users\59892\documents\github\lab3-progavanzada\src\jugador.cpp
+	"Jugador.h"
+
+1655839663 c:\users\59892\documents\github\lab3-progavanzada\include\jugador.h
+	<Usuario.h>
+
+1655841035 source:c:\users\59892\documents\github\lab3-progavanzada\src\multijugador.cpp
+	"Multijugador.h"
+
+1655841320 c:\users\59892\documents\github\lab3-progavanzada\include\multijugador.h
+	<Partida.h>
+
+1655840661 source:c:\users\59892\documents\github\lab3-progavanzada\src\nuevacategoria.cpp
+	"NuevaCategoria.h"
+
+1655859870 c:\users\59892\documents\github\lab3-progavanzada\include\nuevacategoria.h
+	"CategoriaDeVideojuegos.h"
+
+1655840811 source:c:\users\59892\documents\github\lab3-progavanzada\src\nuevaplataforma.cpp
+	"NuevaPlataforma.h"
+
+1655840811 c:\users\59892\documents\github\lab3-progavanzada\include\nuevaplataforma.h
+	<CategoriaPlataforma.h>
+
+1655840746 source:c:\users\59892\documents\github\lab3-progavanzada\src\nuevogenero.cpp
+	"NuevoGenero.h"
+
+1655840746 c:\users\59892\documents\github\lab3-progavanzada\include\nuevogenero.h
+	<CategoriaGenero.h>
+
+1655840953 source:c:\users\59892\documents\github\lab3-progavanzada\src\partida.cpp
+	"Partida.h"
+
+1655840722 source:c:\users\59892\documents\github\lab3-progavanzada\src\pordefectogenero.cpp
+	"PorDefectoGenero.h"
+
+1655859871 c:\users\59892\documents\github\lab3-progavanzada\include\pordefectogenero.h
+	<CategoriaGenero.h>
+
+1655840790 source:c:\users\59892\documents\github\lab3-progavanzada\src\pordefectoplataforma.cpp
+	"PorDefectoPlataforma.h"
+
+1655859871 c:\users\59892\documents\github\lab3-progavanzada\include\pordefectoplataforma.h
+	<CategoriaPlataforma.h>
+
+1655839896 source:c:\users\59892\documents\github\lab3-progavanzada\src\suscripcion.cpp
+	"Suscripcion.h"
+
+1655862023 c:\users\59892\documents\github\lab3-progavanzada\include\suscripcion.h
+	"StandardHeaders.h"
+
+1655840077 source:c:\users\59892\documents\github\lab3-progavanzada\src\temporal.cpp
+	"Temporal.h"
+
+1655859871 c:\users\59892\documents\github\lab3-progavanzada\include\temporal.h
+	<Suscripcion.h>
+
+1655839578 source:c:\users\59892\documents\github\lab3-progavanzada\src\usuario.cpp
+	"Usuario.h"
+
+1655840434 source:c:\users\59892\documents\github\lab3-progavanzada\src\videojuego.cpp
+	"Videojuego.h"
+
+1655861942 c:\users\59892\documents\github\lab3-progavanzada\include\videojuego.h
+	"DtCostoSuscripcion.h"
+
+1655840297 source:c:\users\59892\documents\github\lab3-progavanzada\src\vitalicia.cpp
+	"Vitalicia.h"
+
+1655840297 c:\users\59892\documents\github\lab3-progavanzada\include\vitalicia.h
+	<Suscripcion.h>
+
+1655860525 source:c:\users\59892\documents\github\lab3-progavanzada\src\partidascontroller.cpp
+	"PartidasController.h"
+
+1655861836 c:\users\59892\documents\github\lab3-progavanzada\include\partidascontroller.h
+	<IPartidas.h>
+

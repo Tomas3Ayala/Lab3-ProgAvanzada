@@ -82,12 +82,15 @@
 		<Unit filename="include/NuevaPlataforma.h" />
 		<Unit filename="include/NuevoGenero.h" />
 		<Unit filename="include/Partida.h" />
+		<Unit filename="include/PartidasController.h" />
 		<Unit filename="include/PorDefectoGenero.h" />
 		<Unit filename="include/PorDefectoPlataforma.h" />
 		<Unit filename="include/Suscripcion.h" />
 		<Unit filename="include/Temporal.h" />
+		<Unit filename="include/UsersControllers.h" />
 		<Unit filename="include/Usuario.h" />
 		<Unit filename="include/Videojuego.h" />
+		<Unit filename="include/VideojuegosController.h" />
 		<Unit filename="include/Vitalicia.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CategoriaDeVideojuegos.cpp" />
@@ -108,12 +111,15 @@
 		<Unit filename="src/NuevaPlataforma.cpp" />
 		<Unit filename="src/NuevoGenero.cpp" />
 		<Unit filename="src/Partida.cpp" />
+		<Unit filename="src/PartidasController.cpp" />
 		<Unit filename="src/PorDefectoGenero.cpp" />
 		<Unit filename="src/PorDefectoPlataforma.cpp" />
 		<Unit filename="src/Suscripcion.cpp" />
 		<Unit filename="src/Temporal.cpp" />
+		<Unit filename="src/UsersControllers.cpp" />
 		<Unit filename="src/Usuario.cpp" />
 		<Unit filename="src/Videojuego.cpp" />
+		<Unit filename="src/VideojuegosController.cpp" />
 		<Unit filename="src/Vitalicia.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -2,7 +2,7 @@
 #define PARTIDA_H
 #include "DtFechaHora.h"
 
-class Partida
+class Partida : public ICollectible
 {
     public:
         Partida();

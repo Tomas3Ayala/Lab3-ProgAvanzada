@@ -2,7 +2,7 @@
 #define VIDEOJUEGO_H
 #include "DtCostoSuscripcion.h"
 
-class Videojuego
+class Videojuego : public ICollectible
 {
     public:
         Videojuego();
@@ -27,6 +27,8 @@ class Videojuego
         int total_horas_videojuego;
         float promedio_puntaje;
         DtCostoSuscripcion costo_suscripcion;
+        ICollection* partidas;
+        ICollection* categorias_de_videojuegos;
 };
 
 #endif // VIDEOJUEGO_H

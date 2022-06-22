@@ -2,7 +2,7 @@
 #define CATEGORIADEVIDEOJUEGOS_H
 #include "StandardHeaders.h"
 
-class CategoriaDeVideojuegos
+class CategoriaDeVideojuegos : public ICollectible
 {
     public:
         CategoriaDeVideojuegos();

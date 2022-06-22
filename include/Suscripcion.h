@@ -1,14 +1,12 @@
 #ifndef SUSCRIPCION_H
 #define SUSCRIPCION_H
+#include "StandardHeaders.h"
 
-
-class Suscripcion
+class Suscripcion : public ICollectible
 {
     public:
         Suscripcion();
         virtual ~Suscripcion();
-
-    protected:
 
     private:
 };
