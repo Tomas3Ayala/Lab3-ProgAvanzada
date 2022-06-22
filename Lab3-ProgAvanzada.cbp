@@ -68,8 +68,10 @@
 		<Unit filename="include/CategoriaGenero.h" />
 		<Unit filename="include/CategoriaPlataforma.h" />
 		<Unit filename="include/Desarrollador.h" />
+		<Unit filename="include/DtPartidaInfo.h" />
 		<Unit filename="include/IPartidas.h" />
 		<Unit filename="include/IUsers.h" />
+		<Unit filename="include/IVideojuegos.h" />
 		<Unit filename="include/Individual.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="include/Multijugador.h" />
@@ -89,8 +91,10 @@
 		<Unit filename="src/CategoriaGenero.cpp" />
 		<Unit filename="src/CategoriaPlataforma.cpp" />
 		<Unit filename="src/Desarrollador.cpp" />
+		<Unit filename="src/DtPartidaInfo.cpp" />
 		<Unit filename="src/IPartidas.cpp" />
 		<Unit filename="src/IUsers.cpp" />
+		<Unit filename="src/IVideojuegos.cpp" />
 		<Unit filename="src/Individual.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/Multijugador.cpp" />

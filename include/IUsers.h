@@ -12,7 +12,7 @@ class IUsers
         virtual void suscribirseVideojuego()=0;
         virtual void agregarCategoria()=0;
         virtual ICollection* listarNickNameDescripciones()=0;
-        virtual CostoSuscripcion listarSuscripciones(string)=0;
+        virtual DtCostoSuscripcion listarSuscripciones(string)=0;
         virtual ICollection* listarNombreCategorias()=0;
 
 
