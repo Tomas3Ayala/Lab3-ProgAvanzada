@@ -1,6 +1,6 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
-
+#include "DtFechaHora.h"
 
 class Partida
 {

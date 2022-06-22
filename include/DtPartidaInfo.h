@@ -1,6 +1,6 @@
 #ifndef DTPARTIDAINFO_H
 #define DTPARTIDAINFO_H
-
+#include "StandardHeaders.h"
 
 class DtPartidaInfo
 {
@@ -14,8 +14,8 @@ class DtPartidaInfo
 		void Setnombre_videojuego(string val) { nombre_videojuego = val; }
 		string Getnickname_inicio() { return nickname_inicio; }
 		void Setnickname_inicio(string val) { nickname_inicio = val; }
-		std::vector<string> Getnicknames_participan() { return nicknames_participan; }
-		void Setnicknames_participan(std::vector<string> val) { nicknames_participan = val; }
+		vector<string> Getnicknames_participan() { return nicknames_participan; }
+		void Setnicknames_participan(vector<string> val) { nicknames_participan = val; }
 
 	protected:
 
@@ -23,7 +23,7 @@ class DtPartidaInfo
 		int identificador;
 		string nombre_videojuego;
 		string nickname_inicio;
-		std::vector<string> nicknames_participan;
+		vector<string> nicknames_participan;
 };
 
 #endif // DTPARTIDAINFO_H

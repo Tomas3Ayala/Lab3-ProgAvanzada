@@ -4,8 +4,3 @@ DtComentarioRealizado::DtComentarioRealizado()
 {
 	//ctor
 }
-
-DtComentarioRealizado::~DtComentarioRealizado()
-{
-	//dtor
-}

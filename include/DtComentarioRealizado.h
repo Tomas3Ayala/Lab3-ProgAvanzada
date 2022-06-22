@@ -1,6 +1,6 @@
 #ifndef DTCOMENTARIOREALIZADO_H
 #define DTCOMENTARIOREALIZADO_H
-
+#include "DtFechaHora.h"
 
 class DtComentarioRealizado
 {

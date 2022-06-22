@@ -1,10 +1,10 @@
 #ifndef CATEGORIAPLATAFORMA_H
 #define CATEGORIAPLATAFORMA_H
 
-#include <CategoriaDeVideojuego.h>
+#include "CategoriaDeVideojuegos.h"
 
 
-class CategoriaPlataforma : public CategoriaDeVideojuego
+class CategoriaPlataforma : public CategoriaDeVideojuegos
 {
     public:
         CategoriaPlataforma();

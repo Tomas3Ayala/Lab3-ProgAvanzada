@@ -1,10 +1,10 @@
 #ifndef CATEGORIAGENERO_H
 #define CATEGORIAGENERO_H
 
-#include <CategoriaDeVideojuego.h>
+#include <CategoriaDeVideojuegos.h>
 
 
-class CategoriaGenero : public CategoriaDeVideojuego
+class CategoriaGenero : public CategoriaDeVideojuegos
 {
     public:
         CategoriaGenero();

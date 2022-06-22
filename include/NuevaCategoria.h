@@ -1,10 +1,10 @@
 #ifndef NUEVACATEGORIA_H
 #define NUEVACATEGORIA_H
 
-#include <CategoriaDeVideojuego.h>
+#include "CategoriaDeVideojuegos.h"
 
 
-class NuevaCategoria : public CategoriaDeVideojuego
+class NuevaCategoria : public CategoriaDeVideojuegos
 {
     public:
         NuevaCategoria();

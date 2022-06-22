@@ -1,6 +1,6 @@
 #ifndef CATEGORIADEVIDEOJUEGOS_H
 #define CATEGORIADEVIDEOJUEGOS_H
-
+#include "StandardHeaders.h"
 
 class CategoriaDeVideojuegos
 {

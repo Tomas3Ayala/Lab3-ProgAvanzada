@@ -3,6 +3,16 @@
 
 #include <CategoriaPlataforma.h>
 
+enum class PLATAFORMA
+{
+	PC,
+	Switch,
+	PS4,
+	Xbox,
+	Xbox_One,
+	Xbox_X,
+	PS5
+};
 
 class PorDefectoPlataforma : public CategoriaPlataforma
 {

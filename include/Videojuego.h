@@ -1,6 +1,6 @@
 #ifndef VIDEOJUEGO_H
 #define VIDEOJUEGO_H
-
+#include "DtCostoSuscripcion.h"
 
 class Videojuego
 {

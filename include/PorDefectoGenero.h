@@ -3,6 +3,13 @@
 
 #include <CategoriaGenero.h>
 
+enum class GENERO
+{
+	Accion,
+	Aventura,
+	Estrategia,
+	Deporte
+};
 
 class PorDefectoGenero : public CategoriaGenero
 {

@@ -3,6 +3,12 @@
 
 #include <Suscripcion.h>
 
+enum class EnumValidez
+{
+	UN_MES,
+	TRIMESTRE,
+	ANIO,
+};
 
 class Temporal : public Suscripcion
 {
@@ -10,8 +16,8 @@ class Temporal : public Suscripcion
         Temporal();
         virtual ~Temporal();
 
-        DtValidez Getperiodo_validez() { return periodo_validez; }
-        void Setperiodo_validez(DtValidez val) { periodo_validez = val; }
+        EnumValidez Getperiodo_validez() { return periodo_validez; }
+        void Setperiodo_validez(EnumValidez val) { periodo_validez = val; }
         float Getvalor_cuota() { return valor_cuota; }
         void Setvalor_cuota(float val) { valor_cuota = val; }
         bool Getestado() { return estado; }
@@ -20,7 +26,7 @@ class Temporal : public Suscripcion
     protected:
 
     private:
-        DtValidez periodo_validez;
+        EnumValidez periodo_validez;
         float valor_cuota;
         bool estado;
 };

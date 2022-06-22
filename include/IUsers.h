@@ -1,6 +1,6 @@
 #ifndef IUSERS_H
 #define IUSERS_H
-
+#include "DtCostoSuscripcion.h"
 
 class IUsers
 {

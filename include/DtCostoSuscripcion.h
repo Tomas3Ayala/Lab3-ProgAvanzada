@@ -1,6 +1,6 @@
 #ifndef DTCOSTOSUSCRIPCION_H
 #define DTCOSTOSUSCRIPCION_H
-
+#include "StandardHeaders.h"
 
 class DtCostoSuscripcion
 {
