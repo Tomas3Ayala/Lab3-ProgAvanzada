@@ -72,6 +72,7 @@
 		<Unit filename="include/DtCostoSuscripcion.h" />
 		<Unit filename="include/DtFechaHora.h" />
 		<Unit filename="include/DtPartidaInfo.h" />
+		<Unit filename="include/Fabrica.h" />
 		<Unit filename="include/IPartidas.h" />
 		<Unit filename="include/IUsers.h" />
 		<Unit filename="include/IVideojuegos.h" />
@@ -101,6 +102,7 @@
 		<Unit filename="src/DtCostoSuscripcion.cpp" />
 		<Unit filename="src/DtFechaHora.cpp" />
 		<Unit filename="src/DtPartidaInfo.cpp" />
+		<Unit filename="src/Fabrica.cpp" />
 		<Unit filename="src/IPartidas.cpp" />
 		<Unit filename="src/IUsers.cpp" />
 		<Unit filename="src/IVideojuegos.cpp" />

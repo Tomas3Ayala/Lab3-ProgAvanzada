@@ -7,6 +7,8 @@
 class PartidasController : public IPartidas
 {
     public:
+		static PartidasController* get_instance();
+
         ~PartidasController();
         void realizarComentario();
         void abandonarPartida();
@@ -18,7 +20,8 @@ class PartidasController : public IPartidas
         ICollection* listarVideojuegosSuscritos();
 
     private:
-         PartidasController();
+    	static PartidasController* instance;
+    	PartidasController();
 
 };
 
