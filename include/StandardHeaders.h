@@ -8,6 +8,7 @@
 
 // Collections
 #include "../ColeccionesG/ICollection.h"
+#include "../ColeccionesG/IDictionary.h"
 
 using namespace std;
 

@@ -70,6 +70,7 @@
 		<Unit filename="include/Desarrollador.h" />
 		<Unit filename="include/DtComentarioRealizado.h" />
 		<Unit filename="include/DtCostoSuscripcion.h" />
+		<Unit filename="include/DtDatosPartida.h" />
 		<Unit filename="include/DtFechaHora.h" />
 		<Unit filename="include/DtPartidaInfo.h" />
 		<Unit filename="include/Fabrica.h" />
@@ -100,6 +101,7 @@
 		<Unit filename="src/Desarrollador.cpp" />
 		<Unit filename="src/DtComentarioRealizado.cpp" />
 		<Unit filename="src/DtCostoSuscripcion.cpp" />
+		<Unit filename="src/DtDatosPartida.cpp" />
 		<Unit filename="src/DtFechaHora.cpp" />
 		<Unit filename="src/DtPartidaInfo.cpp" />
 		<Unit filename="src/Fabrica.cpp" />

@@ -20,7 +20,6 @@ class IPartidas
 
 
 
-
     private:
 };
 

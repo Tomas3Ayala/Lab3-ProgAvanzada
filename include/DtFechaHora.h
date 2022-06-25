@@ -20,8 +20,6 @@ class DtFechaHora
 		int Getsegundos() { return segundos; }
 		void Setsegundos(int val) { segundos = val; }
 
-	protected:
-
 	private:
 		int dia;
 		int mes;

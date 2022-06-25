@@ -15,8 +15,6 @@ class Partida : public ICollectible
         DtFechaHora Getduracion_finalizacion() { return duracion_finalizacion; }
         void Setduracion_finalizacion(DtFechaHora val) { duracion_finalizacion = val; }
 
-    protected:
-
     private:
         int nropartida;
         DtFechaHora fecha_hora_comienzo;

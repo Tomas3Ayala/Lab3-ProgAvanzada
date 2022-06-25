@@ -2,7 +2,7 @@
 #define DTCOMENTARIOREALIZADO_H
 #include "DtFechaHora.h"
 
-class DtComentarioRealizado
+class DtComentarioRealizado : ICollectible
 {
 	public:
 		DtComentarioRealizado();

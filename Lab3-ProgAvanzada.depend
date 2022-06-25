@@ -125,14 +125,15 @@
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\categoriadevideojuegos.cpp
 	"CategoriaDeVideojuegos.h"
 
-1655862253 c:\users\tomas\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
+1656124694 c:\users\tomas\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
 	"StandardHeaders.h"
 
-1655857769 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
+1656109979 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
 	<iostream>
 	<vector>
 	<string>
 	"../ColeccionesG/ICollection.h"
+	"../ColeccionesG/IDictionary.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\categoriagenero.cpp
 	"CategoriaGenero.h"
@@ -158,7 +159,7 @@
 1655856265 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtfechahora.cpp
 	"DtFechaHora.h"
 
-1655857613 c:\users\tomas\documents\github\lab3-progavanzada\include\dtfechahora.h
+1656109786 c:\users\tomas\documents\github\lab3-progavanzada\include\dtfechahora.h
 	"StandardHeaders.h"
 
 1655857620 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtcostosuscripcion.cpp
@@ -170,7 +171,7 @@
 1655855887 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtpartidainfo.cpp
 	"DtPartidaInfo.h"
 
-1655858129 c:\users\tomas\documents\github\lab3-progavanzada\include\dtpartidainfo.h
+1656110782 c:\users\tomas\documents\github\lab3-progavanzada\include\dtpartidainfo.h
 	"StandardHeaders.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\individual.cpp
@@ -179,13 +180,13 @@
 1655852764 c:\users\tomas\documents\github\lab3-progavanzada\include\individual.h
 	<Partida.h>
 
-1655862253 c:\users\tomas\documents\github\lab3-progavanzada\include\partida.h
+1656111509 c:\users\tomas\documents\github\lab3-progavanzada\include\partida.h
 	"DtFechaHora.h"
 
 1655857781 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtcomentariorealizado.cpp
 	"DtComentarioRealizado.h"
 
-1655857595 c:\users\tomas\documents\github\lab3-progavanzada\include\dtcomentariorealizado.h
+1656110901 c:\users\tomas\documents\github\lab3-progavanzada\include\dtcomentariorealizado.h
 	"DtFechaHora.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\jugador.cpp
@@ -203,7 +204,7 @@
 1655857815 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ipartidas.cpp
 	"IPartidas.h"
 
-1655857651 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
+1656112057 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
 	"StandardHeaders.h"
 
 1655857826 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ivideojuegos.cpp
@@ -571,13 +572,14 @@
 	"PartidasController.h"
 	"VideojuegosController.h"
 
-1656024481 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
+1656125048 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
 	<IUsers.h>
 
-1656023863 c:\users\tomas\documents\github\lab3-progavanzada\include\partidascontroller.h
+1656124272 c:\users\tomas\documents\github\lab3-progavanzada\include\partidascontroller.h
 	<IPartidas.h>
+	"DtDatosPartida.h"
 
-1656024502 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
+1656125000 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
 	<IVideojuegos.h>
 
 1656024373 source:c:\users\tomas\documents\github\lab3-progavanzada\src\userscontrollers.cpp
@@ -588,4 +590,7 @@
 
 1656024359 source:c:\users\tomas\documents\github\lab3-progavanzada\src\partidascontroller.cpp
 	"PartidasController.h"
+
+1656111918 c:\users\tomas\documents\github\lab3-progavanzada\include\dtdatospartida.h
+	"DtFechaHora.h"
 

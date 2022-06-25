@@ -13,8 +13,6 @@ class CategoriaDeVideojuegos : public ICollectible
         string Getdescripcion() { return descripcion; }
         void Setdescripcion(string val) { descripcion = val; }
 
-    protected:
-
     private:
         string nombre;
         string descripcion;

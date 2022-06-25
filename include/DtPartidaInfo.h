@@ -2,7 +2,7 @@
 #define DTPARTIDAINFO_H
 #include "StandardHeaders.h"
 
-class DtPartidaInfo
+class DtPartidaInfo : ICollectible
 {
 	public:
 		DtPartidaInfo();
