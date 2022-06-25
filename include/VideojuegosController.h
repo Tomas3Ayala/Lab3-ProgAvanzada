@@ -2,6 +2,7 @@
 #define VIDEOJUEGOSCONTROLLER_H
 
 #include <IVideojuegos.h>
+#include <Videojuego.h>
 
 
 class VideojuegosController : public IVideojuegos
@@ -33,12 +34,6 @@ class VideojuegosController : public IVideojuegos
 		void mostrarInformacionIngresadaDelVideojuego();
 		void darDeAltaVideojuego();
 		void cancelarCreacionDeVideojuego();
-
-		// Otro
-		ICollection* listarVideojuegos();
-		ICollection* listarCategoriaGeneros();
-		ICollection* listarCategoriaPlataformas();
-		ICollection* listarRestoCategorias();
 
     private:
     	static VideojuegosController* instance;

@@ -39,7 +39,7 @@ class UsersControllers : public IUsers
 		void agregarCategoria(string nombre, string descripcion, TipoCategoria tipo_categoria);
 
 		// asignar puntaje a videojuego
-		ICollection* listarVideojuegos();
+		// ICollection* listarVideojuegos();
 		void asignarPuntaje(string nombre, int puntaje);
 
 		// Otros

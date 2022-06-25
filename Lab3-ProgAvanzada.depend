@@ -180,7 +180,7 @@
 1655852764 c:\users\tomas\documents\github\lab3-progavanzada\include\individual.h
 	<Partida.h>
 
-1656111509 c:\users\tomas\documents\github\lab3-progavanzada\include\partida.h
+1656199434 c:\users\tomas\documents\github\lab3-progavanzada\include\partida.h
 	"DtFechaHora.h"
 
 1655857781 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtcomentariorealizado.cpp
@@ -204,15 +204,15 @@
 1655857815 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ipartidas.cpp
 	"IPartidas.h"
 
-1656205944 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
+1656206533 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
 	"DtFechaHora.h"
 	"DtDatosPartida.h"
 
 1655857826 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ivideojuegos.cpp
 	"IVideojuegos.h"
 
-1656205667 c:\users\tomas\documents\github\lab3-progavanzada\include\ivideojuegos.h
-	"StandardHeaders.h"
+1656207009 c:\users\tomas\documents\github\lab3-progavanzada\include\ivideojuegos.h
+	"DtCostoSuscripcion.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\nuevacategoria.cpp
 	"NuevaCategoria.h"
@@ -250,7 +250,7 @@
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\suscripcion.cpp
 	"Suscripcion.h"
 
-1655862253 c:\users\tomas\documents\github\lab3-progavanzada\include\suscripcion.h
+1656199696 c:\users\tomas\documents\github\lab3-progavanzada\include\suscripcion.h
 	"StandardHeaders.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\usuario.cpp
@@ -259,7 +259,7 @@
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\temporal.cpp
 	"Temporal.h"
 
-1655857976 c:\users\tomas\documents\github\lab3-progavanzada\include\temporal.h
+1656199924 c:\users\tomas\documents\github\lab3-progavanzada\include\temporal.h
 	<Suscripcion.h>
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\vitalicia.cpp
@@ -573,15 +573,16 @@
 	"PartidasController.h"
 	"VideojuegosController.h"
 
-1656205830 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
+1656206292 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
 	<IUsers.h>
 
-1656124272 c:\users\tomas\documents\github\lab3-progavanzada\include\partidascontroller.h
+1656198996 c:\users\tomas\documents\github\lab3-progavanzada\include\partidascontroller.h
 	<IPartidas.h>
 	"DtDatosPartida.h"
 
-1656204841 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
+1656207128 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
 	<IVideojuegos.h>
+	<Videojuego.h>
 
 1656024373 source:c:\users\tomas\documents\github\lab3-progavanzada\src\userscontrollers.cpp
 	"UsersControllers.h"

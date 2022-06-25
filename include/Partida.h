@@ -19,6 +19,8 @@ class Partida : public ICollectible
         int nropartida;
         DtFechaHora fecha_hora_comienzo;
         DtFechaHora duracion_finalizacion;
+
+        ICollection* comentarios;
 };
 
 #endif // PARTIDA_H

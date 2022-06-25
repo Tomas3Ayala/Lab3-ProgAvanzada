@@ -14,7 +14,7 @@ class PartidasController : public IPartidas
 		// realizar comentario
 		ICollection* obtenerPartidas(); // DtPartidaInfo
 		void seleccionarPartida(int identificador);
-		ICollection* listarComentarios() // DtComentarioRealizado
+		ICollection* listarComentarios(); // DtComentarioRealizado
 		void seleccionComentario(int identificador);
 		void agregarTextoMensaje(string texto);
 		void darDeAltaComentario(DtFechaHora fecha_hora);
@@ -26,21 +26,21 @@ class PartidasController : public IPartidas
 		bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida);
 		string mostrarNicknameDelQueLaInicio(ICollectible* partida);
 		vector<string> mostrarNicknamesParticipantes(ICollectible* partida);
-		void confirmarPartidaQueDeseaFinalizar(int identificador);
+		void confirmarPartidaQueDeseaAbandonar(int identificador);
 
 		// finalizar partida
 		ICollection* obtenerPartidasNoFinalizadasAlInicio();
-		DtDatosPartida mostrarDatosPartida(ICollectible* partida);
+		// DtDatosPartida mostrarDatosPartida(ICollectible* partida);
 		bool mostrarSiEsContinuacion(ICollectible* partida);
-		bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida);
-		vector<string> mostrarNicknamesParticipantes(ICollectible* partida);
+		// bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida);
+		// vector<string> mostrarNicknamesParticipantes(ICollectible* partida);
 		void confirmarPartidaQueDeseaFinalizar(int identificador);
 
 		// iniciar partida
 		ICollection* listarVideojuegosSuscritos();
 		void seleccionarVideojuego(ICollectible* videojuego);
 		ICollection* listarPartidasEnOrden(); // partidas individuales
-		void seleccionarPartida(int identificador);
+		// void seleccionarPartida(int identificador);
 		void esTransmitidaEnVivo(bool es_transmitida_en_vivo);
 		vector<string> listarDemasJugadoresConSuscripcionActiva();
 		void agregarParticipante(string nickname);
@@ -48,16 +48,13 @@ class PartidasController : public IPartidas
 
 		// Otros
 		ICollection* listarPartidas();
-		ICollection* obtenerPartidas();
-		ICollection* listarComentarios();
-		ICollection* listarVideojuegosSuscritos();
 
 	private:
 		static PartidasController* instance;
 		PartidasController();
 
 		// realizar comentario
-		int partida_seleccionada, partida_a_responder;
+		int partida_seleccionada, comentario_a_responder;
 		string texto_mensaje;
 		DtFechaHora fecha_hora_del_comentario;
 

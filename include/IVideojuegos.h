@@ -1,6 +1,6 @@
 #ifndef IVIDEOJUEGOS_H
 #define IVIDEOJUEGOS_H
-#include "StandardHeaders.h"
+#include "DtCostoSuscripcion.h"
 
 class IVideojuegos
 {
@@ -15,7 +15,7 @@ class IVideojuegos
 
 		// eliminar videojuego
 		virtual ICollection* listarVideojuegosPublicadosNoFinalizados()=0;
-		virtual // void seleccionarVideojuego(string nombre)=0;
+		// virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void eliminarVideojuego()=0;
 		virtual void cancelarEliminacionDeVideojuego()=0;
 
@@ -31,13 +31,6 @@ class IVideojuegos
 		virtual void darDeAltaVideojuego()=0;
 		virtual void cancelarCreacionDeVideojuego()=0;
 
-		// Otro
-		virtual ICollection* listarVideojuegos()=0;
-		virtual ICollection* listarCategoriaGeneros()=0;
-		virtual ICollection* listarCategoriaPlataformas()=0;
-		virtual ICollection* listarRestoCategorias()=0;
-
-	private:
 };
 
 #endif // IVIDEOJUEGOS_H

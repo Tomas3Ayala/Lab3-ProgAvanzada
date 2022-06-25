@@ -22,13 +22,14 @@ class Temporal : public Suscripcion
         void Setvalor_cuota(float val) { valor_cuota = val; }
         bool Getestado() { return estado; }
         void Setestado(bool val) { estado = val; }
-
-    protected:
+        bool Getfecha_cancelacion() { return fecha_cancelacion; }
+        void Setfecha_cancelacion(DtFechaHora val) { fecha_cancelacion = val; }
 
     private:
         EnumValidez periodo_validez;
         float valor_cuota;
         bool estado;
+        DtFechaHora fecha_cancelacion;
 };
 
 #endif // TEMPORAL_H

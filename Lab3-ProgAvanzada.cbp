@@ -67,6 +67,7 @@
 		<Unit filename="include/CategoriaDeVideojuegos.h" />
 		<Unit filename="include/CategoriaGenero.h" />
 		<Unit filename="include/CategoriaPlataforma.h" />
+		<Unit filename="include/Comentario.h" />
 		<Unit filename="include/Desarrollador.h" />
 		<Unit filename="include/DtComentarioRealizado.h" />
 		<Unit filename="include/DtCostoSuscripcion.h" />
@@ -98,6 +99,7 @@
 		<Unit filename="src/CategoriaDeVideojuegos.cpp" />
 		<Unit filename="src/CategoriaGenero.cpp" />
 		<Unit filename="src/CategoriaPlataforma.cpp" />
+		<Unit filename="src/Comentario.cpp" />
 		<Unit filename="src/Desarrollador.cpp" />
 		<Unit filename="src/DtComentarioRealizado.cpp" />
 		<Unit filename="src/DtCostoSuscripcion.cpp" />
