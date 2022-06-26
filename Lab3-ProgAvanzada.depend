@@ -128,7 +128,7 @@
 1656124694 c:\users\tomas\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
 	"StandardHeaders.h"
 
-1656109979 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
+1656205828 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
 	<iostream>
 	<vector>
 	<string>
@@ -204,13 +204,14 @@
 1655857815 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ipartidas.cpp
 	"IPartidas.h"
 
-1656112057 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
-	"StandardHeaders.h"
+1656205944 c:\users\tomas\documents\github\lab3-progavanzada\include\ipartidas.h
+	"DtFechaHora.h"
+	"DtDatosPartida.h"
 
 1655857826 source:c:\users\tomas\documents\github\lab3-progavanzada\src\ivideojuegos.cpp
 	"IVideojuegos.h"
 
-1655857805 c:\users\tomas\documents\github\lab3-progavanzada\include\ivideojuegos.h
+1656205667 c:\users\tomas\documents\github\lab3-progavanzada\include\ivideojuegos.h
 	"StandardHeaders.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\nuevacategoria.cpp
@@ -234,7 +235,7 @@
 1655857823 source:c:\users\tomas\documents\github\lab3-progavanzada\src\iusers.cpp
 	"IUsers.h"
 
-1655857856 c:\users\tomas\documents\github\lab3-progavanzada\include\iusers.h
+1656205894 c:\users\tomas\documents\github\lab3-progavanzada\include\iusers.h
 	"DtCostoSuscripcion.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\partida.cpp
@@ -572,14 +573,14 @@
 	"PartidasController.h"
 	"VideojuegosController.h"
 
-1656125048 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
+1656205830 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
 	<IUsers.h>
 
 1656124272 c:\users\tomas\documents\github\lab3-progavanzada\include\partidascontroller.h
 	<IPartidas.h>
 	"DtDatosPartida.h"
 
-1656125000 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
+1656204841 c:\users\tomas\documents\github\lab3-progavanzada\include\videojuegoscontroller.h
 	<IVideojuegos.h>
 
 1656024373 source:c:\users\tomas\documents\github\lab3-progavanzada\src\userscontrollers.cpp
@@ -593,4 +594,7 @@
 
 1656111918 c:\users\tomas\documents\github\lab3-progavanzada\include\dtdatospartida.h
 	"DtFechaHora.h"
+
+1656111921 source:c:\users\tomas\documents\github\lab3-progavanzada\src\dtdatospartida.cpp
+	"DtDatosPartida.h"
 

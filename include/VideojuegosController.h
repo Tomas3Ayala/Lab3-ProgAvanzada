@@ -11,8 +11,16 @@ class VideojuegosController : public IVideojuegos
 		~VideojuegosController();
 
 		// ver informacion de videojuego
+		ICollection* listarVideojuegos();
+		void seleccionarVideojuego(string nombre);
+		void muestraDatosVideojuego();
+		void muestraTotalHorasVideojuego();
 
 		// eliminar videojuego
+		ICollection* listarVideojuegosPublicadosNoFinalizados();
+		// void seleccionarVideojuego(string nombre);
+		void eliminarVideojuego(); // elimina el videojuego que lleva el nombre nombre_videojuego;
+		void cancelarEliminacionDeVideojuego();
 
 		// publicar videojuego
 		void agregarVideojuego(string nombre, string descripcion, DtCostoSuscripcion costo);
@@ -40,10 +48,16 @@ class VideojuegosController : public IVideojuegos
         ICollection* videojuegos;
         ICollection* categorias_de_videojuegos;
 
+        // Videojuego
+        Videojuego* videojuego;
+
 		// publicar videojuego
 		string _descripcion;
 		DtCostoSuscripcion costo_de_suscripcion;
 		ICollection* categorias; // categorias de genero
+
+		// eliminar videojuego y publicar videojuego
+		string nombre_videojuego;
 };
 
 #endif // VIDEOJUEGOSCONTROLLER_H

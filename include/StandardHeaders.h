@@ -12,5 +12,25 @@
 
 using namespace std;
 
+enum class EnumMetodoPago
+{
+	Tarjeta,
+	PayPal,
+};
+
+enum class EnumTipoSuscripcion
+{
+	Vitalicia,
+	Mensual,
+	Trimestral,
+	Anual,
+};
+
+enum class TipoCategoria
+{
+	Plataforma,
+	Genero,
+	Otro,
+};
 
 #endif // STANDARDHEADERS_H_INCLUDED

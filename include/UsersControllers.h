@@ -3,27 +3,6 @@
 
 #include <IUsers.h>
 
-enum class EnumMetodoPago
-{
-	Tarjeta,
-	PayPal,
-};
-
-enum class EnumTipoSuscripcion
-{
-	Vitalicia,
-	Mensual,
-	Trimestral,
-	Anual,
-};
-
-enum class TipoCategoria
-{
-	Plataforma,
-	Genero,
-	Otro,
-};
-
 class UsersControllers : public IUsers
 {
     public:
