@@ -1,13 +1,14 @@
 #ifndef FABRICA_H
 #define FABRICA_H
-#include "UsersControllers.h"
-#include "PartidasController.h"
-#include "VideojuegosController.h"
+#include "controllers/UsersControllers.h"
+#include "controllers/PartidasController.h"
+#include "controllers/VideojuegosController.h"
 
 class Fabrica
 {
 	public:
 		static Fabrica* get_instance();
+		~Fabrica();
 
 		IUsers* getIUsers();
 		IPartidas* getIPartidas();
@@ -15,7 +16,6 @@ class Fabrica
 	private:
 		static Fabrica* instance;
 		Fabrica() = default;
-		~Fabrica();
 
 		IUsers* users_interface;
 		IPartidas* partidas_interface;

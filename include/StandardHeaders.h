@@ -8,7 +8,9 @@
 
 // Collections
 #include "../ColeccionesG/ICollection.h"
-#include "../ColeccionesG/IDictionary.h"
+#include "../ColeccionesG/ListaDicc.h"
+#include "../ColeccionesG/Lista.h"
+#include "../ColeccionesG/KeyString.h"
 
 using namespace std;
 
