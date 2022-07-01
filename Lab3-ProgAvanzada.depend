@@ -119,7 +119,7 @@
 	"Par.h"
 	<stdlib.h>
 
-1656287110 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
+1656363429 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
 	"Fabrica.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\categoriadevideojuegos.cpp
@@ -619,13 +619,13 @@
 1656199446 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\comentario.h
 	"StandardHeaders.h"
 
-1656210613 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\desarrollador.cpp
+1656347201 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\desarrollador.cpp
 	"classes/Desarrollador.h"
 
-1656210632 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\desarrollador.h
+1656347206 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\desarrollador.h
 	<classes/Usuario.h>
 
-1656284692 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\usuario.h
+1656357747 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\usuario.h
 	"StandardHeaders.h"
 
 1656210632 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\individual.cpp
@@ -722,21 +722,22 @@
 	<interfaces/IPartidas.h>
 	"datatypes/DtDatosPartida.h"
 
-1656210897 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ipartidas.h
+1656346488 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ipartidas.h
 	"datatypes/DtFechaHora.h"
 	"datatypes/DtDatosPartida.h"
 
 1656111918 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtdatospartida.h
 	"DtFechaHora.h"
 
-1656289575 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\userscontrollers.cpp
+1656357991 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\userscontrollers.cpp
 	"controllers/UsersControllers.h"
 
-1656287788 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\userscontrollers.h
+1656359203 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\userscontrollers.h
 	<interfaces/IUsers.h>
 	"classes/Jugador.h"
+	"classes/Desarrollador.h"
 
-1656280072 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\iusers.h
+1656359590 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\iusers.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1656210988 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\videojuegoscontroller.cpp
@@ -746,7 +747,7 @@
 	<interfaces/IVideojuegos.h>
 	<classes/Videojuego.h>
 
-1656211002 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
+1656346496 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1656210794 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\suscripcion.cpp

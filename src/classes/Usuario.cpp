@@ -3,6 +3,7 @@
 Usuario::Usuario()
 {
 	suscripciones = new Lista;
+	sigue_a = new Lista;
 }
 
 Usuario::~Usuario()

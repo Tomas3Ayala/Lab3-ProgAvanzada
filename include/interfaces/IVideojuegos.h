@@ -7,7 +7,7 @@ class IVideojuegos
 	public:
 		virtual ~IVideojuegos()=default;
 
-		// ver informacion de videojuego
+		/*/ ver informacion de videojuego
 		virtual ICollection* listarVideojuegos()=0;
 		virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void muestraDatosVideojuego()=0;

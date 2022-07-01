@@ -19,10 +19,10 @@ class IUsers
 		virtual void iniciarSesion(string email, string contrasenia)=0;
 
 		// seguir jugador
-		virtual IDictionary* listarNicknamesYDescripciones()=0;
-		void seleccionarJugador(string nickname); // tambien sigue al jugador
+		virtual ICollection* listarNicknamesYDescripciones()=0;
+		virtual void seleccionarJugador(string nickname)=0; // tambien sigue al jugador
 
-		// suscribirse a videojuego
+		/*/ suscribirse a videojuego
 		virtual ICollection* listarVideojuegos()=0;
 		virtual DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego)=0;
 		virtual void ingresarNombreVideojuegoParaSuscripcion(string nombre)=0;
@@ -51,6 +51,7 @@ class IUsers
 		virtual vector<string> listarNicknames()=0;
 		virtual bool datosInicioSesionCorrectos(string email, string contrasenia)=0;
 
+		virtual ICollectible* get_usuario_seleccionado()=0;
 };
 
 #endif // IUSERS_H

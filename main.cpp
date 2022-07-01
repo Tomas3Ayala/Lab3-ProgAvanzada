@@ -4,12 +4,22 @@ void alta_de_usuario_test();
 
 void iniciar_sesion_test();
 
+void seguir_jugador_test();
+
 int main()
 {
 	while (1)
 	{
-		alta_de_usuario_test();
-		iniciar_sesion_test();
+		string opcion;
+		cout << "opcion: ";
+		getline(cin, opcion);
+		if (opcion == "1")
+			alta_de_usuario_test();
+		else if (opcion == "2")
+			iniciar_sesion_test();
+		else
+			seguir_jugador_test();
+
 		string salir;
 		cout << "salir? (s/n): ";
 		getline(cin, salir);
@@ -19,6 +29,79 @@ int main()
 
 	delete Fabrica::get_instance();
 	return 0;
+}
+
+void seguir_jugador_test()
+{
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	if (users->get_usuario_seleccionado() == nullptr)
+	{
+		cout << "Ningun usuario ha iniciado sesion" << endl;
+		return;
+	}
+
+	ICollection* usuarios = users->listarNicknamesYDescripciones();
+
+	// string que contiene el nickname del jugador seleccionado
+	string no_puede_ser;
+	Jugador* jugador_seleccionado;
+	if ((jugador_seleccionado = dynamic_cast<Jugador*>(users->get_usuario_seleccionado())) != nullptr)
+		no_puede_ser = jugador_seleccionado->Getnickname();
+	else
+	{
+		cout << "El usuario que inicio sesion tiene que ser un jugador para este caso" << endl;
+		return;
+	}
+
+	string nickname_a_seguir;
+	while (true)
+	{
+		cout << "Lista de jugadores en el sistema: " << endl;
+		bool hubo_jugadores = false;
+		Jugador* jugador;
+		for (IIterator* it = usuarios->iterator(); it->hasNext(); it->next())
+		{
+			ICollectible* obj = it->getCurrent();
+			if ((jugador = dynamic_cast<Jugador*>(obj)) != nullptr)
+			{
+				if (no_puede_ser != jugador->Getnickname())
+				{
+					cout << jugador->Getnickname() << ", " << jugador->Getdescripcion() << endl;
+					hubo_jugadores = true;
+				}
+			}
+		}
+		if (!hubo_jugadores)
+		{
+			cout << " Ninguno." << endl;
+			return;
+		}
+
+		cout << "Escriba el nickname del jugador al que desea seguir: ";
+		getline(cin, nickname_a_seguir);
+
+		bool esta = false;
+		for (string& nick : users->listarNicknames())
+		{
+			if (nick == nickname_a_seguir)
+			{
+				esta = true;
+				break;
+			}
+		}
+		if (!esta)
+		{
+			string desea_cancelar;
+			cout << "El nickname que escribio no esta en las opciones, desea cancelar? (s/n): ";
+			getline(cin, desea_cancelar);
+			if (desea_cancelar == "s")
+				break;
+			else
+				continue;
+		}
+		users->seleccionarJugador(nickname_a_seguir);
+		break;
+	}
 }
 
 void iniciar_sesion_test()
