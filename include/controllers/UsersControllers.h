@@ -3,6 +3,7 @@
 
 #include <interfaces/IUsers.h>
 #include "classes/Jugador.h"
+#include "classes/Desarrollador.h"
 
 class UsersControllers : public IUsers
 {
@@ -22,7 +23,7 @@ class UsersControllers : public IUsers
 		void iniciarSesion(string email, string contrasenia);
 
 		// seguir jugador
-		IDictionary* listarNicknamesYDescripciones();
+		ICollection* listarNicknamesYDescripciones();
 		void seleccionarJugador(string nickname); // tambien sigue al jugador
 
 		// suscribirse a videojuego
@@ -44,12 +45,13 @@ class UsersControllers : public IUsers
 		void asignarPuntaje(string nombre, int puntaje);
 
 		// Otros
-		IDictionary* listarNickNameDescripciones();
-		DtCostoSuscripcion listarSuscripciones(string);
+		//DtCostoSuscripcion listarSuscripciones(string);
 		ICollection* listarNombreCategorias();
 
 		vector<string> listarNicknames();
 		bool datosInicioSesionCorrectos(string email, string contrasenia);
+
+		ICollectible* get_usuario_seleccionado() { return usuario_seleccionado; }
     private:
     	static UsersControllers* instance;
         UsersControllers();
@@ -62,6 +64,7 @@ class UsersControllers : public IUsers
 
 		// alta de usuario y iniciar sesion
 		string _email, _contrasenia, _nomempresa, _nickname, _descripcion;
+		bool inicia_jugador; // controla si inicia jugador o desarrollador
 
 		// suscribirse a videojuego y asignar puntaje a videojuego
 		string nombre_videojuego;

@@ -1,11 +1,8 @@
 #include "classes/Desarrollador.h"
 
-Desarrollador::Desarrollador()
+Desarrollador::Desarrollador(string _email, string _contrasenia, string empresa)
 {
-    //ctor
-}
-
-Desarrollador::~Desarrollador()
-{
-    //dtor
+	Setemail(_email);
+	Setcontrasenia(_contrasenia);
+	empresa_donde_trabaja = empresa;
 }

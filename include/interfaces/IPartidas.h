@@ -8,7 +8,7 @@ class IPartidas
     public:
         virtual ~IPartidas()=default;
 
-		// realizar comentario
+		/*/ realizar comentario
 		virtual ICollection* obtenerPartidas()=0; // DtPartidaInfo
 		virtual void seleccionarPartida(int identificador)=0;
 		virtual ICollection* listarComentarios()=0; // DtComentarioRealizado
