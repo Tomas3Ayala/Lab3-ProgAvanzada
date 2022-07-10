@@ -9,7 +9,7 @@ class VideojuegosController : public IVideojuegos
 {
     public:
     	static VideojuegosController* get_instance();
-		~VideojuegosController() = default;
+    	~VideojuegosController();
 
 		// ver informacion de videojuego
 		ICollection* listarVideojuegos();

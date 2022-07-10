@@ -12,11 +12,12 @@ class Individual : public Partida
 
         bool Getes_nueva() { return es_nueva; }
         void Setes_nueva(bool val) { es_nueva = val; }
-
-    protected:
+        Individual* Getpartida_que_continua() { return partida_que_continua; }
+        void Setpartida_que_continua(Individual* val) { partida_que_continua = val; }
 
     private:
         bool es_nueva;
+        Individual* partida_que_continua;
 };
 
 #endif // INDIVIDUAL_H

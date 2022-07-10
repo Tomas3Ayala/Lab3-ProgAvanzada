@@ -2,6 +2,7 @@
 #define USERSCONTROLLERS_H
 
 #include <interfaces/IUsers.h>
+#include "controllers/VideojuegosController.h"
 #include "classes/Jugador.h"
 #include "classes/Desarrollador.h"
 
@@ -23,7 +24,7 @@ class UsersControllers : public IUsers
 		void iniciarSesion(string email, string contrasenia);
 
 		// seguir jugador
-		ICollection* listarNicknamesYDescripciones();
+		IDictionary* listarNicknamesYDescripciones();
 		void seleccionarJugador(string nickname); // tambien sigue al jugador
 
 		// suscribirse a videojuego
@@ -57,7 +58,7 @@ class UsersControllers : public IUsers
         UsersControllers();
 
     	// Datos para todos los casos de usos
-        ICollection* usuarios;
+        IDictionary* usuarios;
 
         // cuenta actual
 		ICollectible* usuario_seleccionado;

@@ -11,5 +11,18 @@ VideojuegosController* VideojuegosController::get_instance()
 
 VideojuegosController::VideojuegosController()
 {
-	//
+	videojuegos = new Lista;
+	categorias_de_videojuegos = new Lista;
+	videojuego = nullptr;
+}
+
+VideojuegosController::~VideojuegosController()
+{
+	delete dynamic_cast<Lista*>(videojuegos);
+	delete dynamic_cast<Lista*>(categorias_de_videojuegos);
+}
+
+ICollection* VideojuegosController::listarVideojuegos()
+{
+	return videojuegos;
 }

@@ -18,12 +18,13 @@ class Videojuego : public ICollectible
         void Setpromedio_puntaje(float val) { promedio_puntaje = val; }
         DtCostoSuscripcion Getcosto_suscripcion() { return costo_suscripcion; }
         void Setcosto_suscripcion(DtCostoSuscripcion val) { costo_suscripcion = val; }
-
-    protected:
+        string Getempresa_desarrollo() { return empresa_desarrollo; }
+        void Setempresa_desarrollo(string val) { empresa_desarrollo = val; }
 
     private:
         string nombre;
         string descripcion;
+        string empresa_desarrollo;
         int total_horas_videojuego;
         float promedio_puntaje;
         DtCostoSuscripcion costo_suscripcion;

@@ -19,10 +19,10 @@ class IUsers
 		virtual void iniciarSesion(string email, string contrasenia)=0;
 
 		// seguir jugador
-		virtual ICollection* listarNicknamesYDescripciones()=0;
+		virtual IDictionary* listarNicknamesYDescripciones()=0;
 		virtual void seleccionarJugador(string nickname)=0; // tambien sigue al jugador
 
-		/*/ suscribirse a videojuego
+		// suscribirse a videojuego
 		virtual ICollection* listarVideojuegos()=0;
 		virtual DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego)=0;
 		virtual void ingresarNombreVideojuegoParaSuscripcion(string nombre)=0;
@@ -32,7 +32,7 @@ class IUsers
 		virtual void darDeAltaSuscripcion()=0;
 		virtual void cancelarSuscripcionAVideojuego()=0;
 
-		// agregar categoria
+		/*/ agregar categoria
 		virtual void listarNombresCategorias()=0;
 		virtual void agregarCategoria(string nombre, string descripcion, TipoCategoria tipo_categoria)=0;
 

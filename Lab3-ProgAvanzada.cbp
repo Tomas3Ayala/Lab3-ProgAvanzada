@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="include/classes" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="include/classes" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -66,6 +68,8 @@
 		<Unit filename="ColeccionesG/Par.h" />
 		<Unit filename="include/Fabrica.h" />
 		<Unit filename="include/StandardHeaders.h" />
+		<Unit filename="include/classes/AbandonaMultijugador.h" />
+		<Unit filename="include/classes/AsignaPuntaje.h" />
 		<Unit filename="include/classes/CategoriaDeVideojuegos.h" />
 		<Unit filename="include/classes/CategoriaGenero.h" />
 		<Unit filename="include/classes/CategoriaPlataforma.h" />
@@ -99,6 +103,8 @@
 		<Unit filename="include/interfaces/IVideojuegos.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Fabrica.cpp" />
+		<Unit filename="src/classes/AbandonaMultijugador.cpp" />
+		<Unit filename="src/classes/AsignaPuntaje.cpp" />
 		<Unit filename="src/classes/CategoriaDeVideojuegos.cpp" />
 		<Unit filename="src/classes/CategoriaGenero.cpp" />
 		<Unit filename="src/classes/CategoriaPlataforma.cpp" />

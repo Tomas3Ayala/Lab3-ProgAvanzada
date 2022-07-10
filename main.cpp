@@ -1,29 +1,63 @@
 #include "Fabrica.h"
 
-void alta_de_usuario_test();
+void alta_de_usuario();
 
-void iniciar_sesion_test();
+bool iniciar_sesion();
 
-void seguir_jugador_test();
+void seguir_jugador();
 
 int main()
 {
-	while (1)
+	bool salir = false;
+	while (!salir)
 	{
 		string opcion;
-		cout << "opcion: ";
+		cout << "Alta de usuario, Iniciar sesion o salir" << endl;
+		cout << "Opcion: ";
 		getline(cin, opcion);
 		if (opcion == "1")
-			alta_de_usuario_test();
+			alta_de_usuario();
 		else if (opcion == "2")
-			iniciar_sesion_test();
+		{
+			if (iniciar_sesion())
+			{
+				IUsers* users = Fabrica::get_instance()->getIUsers();
+				Usuario* usuario = dynamic_cast<Usuario*>(users->get_usuario_seleccionado());
+				if (usuario != nullptr)
+				{
+					Jugador* jugador = dynamic_cast<Jugador*>(usuario);
+					if (jugador)
+					{
+						cout << "veo que es un jugador!" << endl;
+						while (1)
+						{
+							cout << "Seguir jugador o salir" << endl;
+							cout << "Opcion: ";
+							getline(cin, opcion);
+							if (opcion == "1")
+								seguir_jugador();
+							else if (opcion == "2")
+								break;
+						}
+					}
+					else
+					{
+						cout << "veo que es un desarrollador!" << endl;
+						while (1)
+						{
+							cout << "Otras opciones o salir" << endl;
+							cout << "Opcion: ";
+							getline(cin, opcion);
+							if (opcion == "2")
+								break;
+						}
+					}
+				}
+				else
+					cout << "pues no" << endl;
+			}
+		}
 		else
-			seguir_jugador_test();
-
-		string salir;
-		cout << "salir? (s/n): ";
-		getline(cin, salir);
-		if (salir == "s")
 			break;
 	}
 
@@ -31,7 +65,7 @@ int main()
 	return 0;
 }
 
-void seguir_jugador_test()
+void seguir_jugador()
 {
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	if (users->get_usuario_seleccionado() == nullptr)
@@ -40,7 +74,7 @@ void seguir_jugador_test()
 		return;
 	}
 
-	ICollection* usuarios = users->listarNicknamesYDescripciones();
+	IDictionary* usuarios = users->listarNicknamesYDescripciones();
 
 	// string que contiene el nickname del jugador seleccionado
 	string no_puede_ser;
@@ -59,7 +93,7 @@ void seguir_jugador_test()
 		cout << "Lista de jugadores en el sistema: " << endl;
 		bool hubo_jugadores = false;
 		Jugador* jugador;
-		for (IIterator* it = usuarios->iterator(); it->hasNext(); it->next())
+		for (IIterator* it = usuarios->getIteratorObj(); it->hasNext(); it->next())
 		{
 			ICollectible* obj = it->getCurrent();
 			if ((jugador = dynamic_cast<Jugador*>(obj)) != nullptr)
@@ -104,7 +138,7 @@ void seguir_jugador_test()
 	}
 }
 
-void iniciar_sesion_test()
+bool iniciar_sesion()
 {
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	string email, contra;
@@ -118,7 +152,7 @@ void iniciar_sesion_test()
 		{
 			users->iniciarSesion(email, contra);
 			cout << "iniciado correctamente!" << endl;
-			return;
+			return true;
 		}
 		else
 		{
@@ -127,12 +161,12 @@ void iniciar_sesion_test()
 			cout << "desea intentarlo de nuevo? (s/n): ";
 			getline(cin, nuevamente);
 			if (nuevamente != "s")
-				return;
+				return false;
 		}
 	}
 }
 
-void alta_de_usuario_test()
+void alta_de_usuario()
 {
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	string email, contra;

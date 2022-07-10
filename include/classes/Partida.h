@@ -18,7 +18,7 @@ class Partida : public ICollectible
     private:
         int nropartida;
         DtFechaHora fecha_hora_comienzo;
-        DtFechaHora duracion_finalizacion;
+        DtFechaHora duracion_finalizacion; // si es todo cero no esta finalizada
 
         ICollection* comentarios;
 };
