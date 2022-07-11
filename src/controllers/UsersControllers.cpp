@@ -101,19 +101,9 @@ void UsersControllers::seleccionarJugador(string nickname) // tambien sigue al j
 }
 
 // suscribirse a videojuego
-ICollection* UsersControllers::listarVideojuegos()
-{
-	return VideojuegosController::get_instance()->listarVideojuegos();
-}
-
-DtCostoSuscripcion UsersControllers::listarSuscripciones(ICollectible* videojuego)
-{
-	//
-}
-
 void UsersControllers::ingresarNombreVideojuegoParaSuscripcion(string nombre)
 {
-	//
+	nombre_videojuego = nombre;
 }
 
 void UsersControllers::finalizarsuscripcion()

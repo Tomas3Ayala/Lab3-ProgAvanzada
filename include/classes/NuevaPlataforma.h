@@ -7,12 +7,9 @@
 class NuevaPlataforma : public CategoriaPlataforma
 {
     public:
-        NuevaPlataforma();
+        NuevaPlataforma(string _nombre, string _descripcion);
         virtual ~NuevaPlataforma();
 
-    protected:
-
-    private:
 };
 
 #endif // NUEVAPLATAFORMA_H

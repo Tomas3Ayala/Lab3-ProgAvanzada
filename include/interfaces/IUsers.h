@@ -23,8 +23,6 @@ class IUsers
 		virtual void seleccionarJugador(string nickname)=0; // tambien sigue al jugador
 
 		// suscribirse a videojuego
-		virtual ICollection* listarVideojuegos()=0;
-		virtual DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego)=0;
 		virtual void ingresarNombreVideojuegoParaSuscripcion(string nombre)=0;
 		virtual void finalizarsuscripcion()=0;
 		virtual void cancelarSuscripcionAnterior()=0;
@@ -32,18 +30,13 @@ class IUsers
 		virtual void darDeAltaSuscripcion()=0;
 		virtual void cancelarSuscripcionAVideojuego()=0;
 
-		/*/ agregar categoria
-		virtual void listarNombresCategorias()=0;
-		virtual void agregarCategoria(string nombre, string descripcion, TipoCategoria tipo_categoria)=0;
-
-		// asignar puntaje a videojuego
+		/*/ asignar puntaje a videojuego
 		// virtual ICollection* listarVideojuegos()=0;
 		virtual void asignarPuntaje(string nombre, int puntaje)=0;
 
 		// Otros
 		virtual IDictionary* listarNickNameDescripciones()=0;
 		virtual DtCostoSuscripcion listarSuscripciones(string)=0;
-		virtual ICollection* listarNombreCategorias()=0;
 
 		//*/
 

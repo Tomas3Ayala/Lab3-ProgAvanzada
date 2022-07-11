@@ -2,7 +2,7 @@
 
 Suscripcion::Suscripcion()
 {
-    //ctor
+	videojuego = nullptr;
 }
 
 Suscripcion::~Suscripcion()

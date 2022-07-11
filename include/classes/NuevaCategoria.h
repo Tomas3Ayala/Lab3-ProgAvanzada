@@ -7,12 +7,8 @@
 class NuevaCategoria : public CategoriaDeVideojuegos
 {
     public:
-        NuevaCategoria();
+        NuevaCategoria(string _nombre, string _descripcion);
         virtual ~NuevaCategoria();
-
-    protected:
-
-    private:
 };
 
 #endif // NUEVACATEGORIA_H

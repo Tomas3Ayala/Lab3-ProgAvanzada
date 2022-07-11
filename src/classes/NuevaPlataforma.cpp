@@ -1,8 +1,9 @@
 #include "classes/NuevaPlataforma.h"
 
-NuevaPlataforma::NuevaPlataforma()
+NuevaPlataforma::NuevaPlataforma(string _nombre, string _descripcion)
 {
-    //ctor
+	Setnombre(_nombre);
+	Setdescripcion(_descripcion);
 }
 
 NuevaPlataforma::~NuevaPlataforma()

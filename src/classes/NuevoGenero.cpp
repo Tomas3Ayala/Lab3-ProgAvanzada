@@ -1,8 +1,9 @@
 #include "classes/NuevoGenero.h"
 
-NuevoGenero::NuevoGenero()
+NuevoGenero::NuevoGenero(string _nombre, string _descripcion)
 {
-    //ctor
+	Setnombre(_nombre);
+	Setdescripcion(_descripcion);
 }
 
 NuevoGenero::~NuevoGenero()

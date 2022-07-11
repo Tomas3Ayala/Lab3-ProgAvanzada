@@ -16,8 +16,6 @@ class DtCostoSuscripcion
 		int Getcosto_vitalicia() { return costo_vitalicia; }
 		void Setcosto_vitalicia(int val) { costo_vitalicia = val; }
 
-	protected:
-
 	private:
 		int costo_mensual;
 		int costo_trimestral;

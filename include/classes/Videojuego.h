@@ -5,7 +5,7 @@
 class Videojuego : public ICollectible
 {
     public:
-        Videojuego();
+        Videojuego(string _nombre, string _descripcion, string _empresa_desarrollo, DtCostoSuscripcion costo, ICollection* categorias);
         virtual ~Videojuego();
 
         string Getnombre() { return nombre; }

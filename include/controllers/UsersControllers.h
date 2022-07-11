@@ -28,18 +28,12 @@ class UsersControllers : public IUsers
 		void seleccionarJugador(string nickname); // tambien sigue al jugador
 
 		// suscribirse a videojuego
-		ICollection* listarVideojuegos();
-		DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego);
 		void ingresarNombreVideojuegoParaSuscripcion(string nombre);
 		void finalizarsuscripcion();
 		void cancelarSuscripcionAnterior();
 		void ingresarDatosSuscripcion(EnumMetodoPago metodo_pago, EnumTipoSuscripcion tipo);
 		void darDeAltaSuscripcion();
 		void cancelarSuscripcionAVideojuego();
-
-		// agregar categoria
-		void listarNombresCategorias();
-		void agregarCategoria(string nombre, string descripcion, TipoCategoria tipo_categoria);
 
 		// asignar puntaje a videojuego
 		// ICollection* listarVideojuegos();
@@ -69,10 +63,6 @@ class UsersControllers : public IUsers
 
 		// suscribirse a videojuego y asignar puntaje a videojuego
 		string nombre_videojuego;
-
-		// agregar categoria
-		string _nombre;
-		TipoCategoria _tipo_categoria;
 
 };
 

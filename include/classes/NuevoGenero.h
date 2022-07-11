@@ -7,12 +7,9 @@
 class NuevoGenero : public CategoriaGenero
 {
     public:
-        NuevoGenero();
+        NuevoGenero(string _nombre, string _descripcion);
         virtual ~NuevoGenero();
 
-    protected:
-
-    private:
 };
 
 #endif // NUEVOGENERO_H

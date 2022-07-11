@@ -3,6 +3,9 @@
 
 #include <interfaces/IVideojuegos.h>
 #include <classes/Videojuego.h>
+#include <classes/NuevoGenero.h>
+#include <classes/NuevaPlataforma.h>
+#include <classes/NuevaCategoria.h>
 
 
 class VideojuegosController : public IVideojuegos
@@ -24,16 +27,25 @@ class VideojuegosController : public IVideojuegos
 		void cancelarEliminacionDeVideojuego();
 
 		// publicar videojuego
-		void agregarVideojuego(string nombre, string descripcion, DtCostoSuscripcion costo);
+		void agregarVideojuego(string nombre, string descripcion, string empresa_lo_desarrollo, DtCostoSuscripcion costo);
 		ICollection* listarCategoriaGeneros();
-		void agregarCategoriaGenero(ICollectible* genero); // CategoriaGenero
+		void agregarCategoriaGenero(ICollectible* genero);
 		ICollection* listarCategoriaPlataforma();
 		void agregarCategoriaPlataforma(ICollectible* plataforma);
 		ICollection* listarRestoCategorias();
-		ICollection* agregarCategoria(ICollectible* categoria);
+		void agregarCategoria(ICollectible* categoria);
 		void mostrarInformacionIngresadaDelVideojuego();
 		void darDeAltaVideojuego();
 		void cancelarCreacionDeVideojuego();
+
+		// agregar categoria
+		void listarNombresCategorias();
+		void agregarNuevaCategoria(string nombre, string descripcion, TipoCategoria tipo_categoria);
+		void darDeAltaNuevaCategoria();
+		void cancelarNuevaCategoria();
+
+		// Demas
+		DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego);
 
     private:
     	static VideojuegosController* instance;
@@ -47,12 +59,16 @@ class VideojuegosController : public IVideojuegos
         Videojuego* videojuego;
 
 		// publicar videojuego
-		string _descripcion;
+		string _descripcion, _empresa_lo_desarrollo;
 		DtCostoSuscripcion costo_de_suscripcion;
-		ICollection* categorias; // categorias de genero
+		ICollection* categorias_de_un_videojuego;
 
 		// eliminar videojuego y publicar videojuego
 		string nombre_videojuego;
+
+		// agregar categoria
+		string _nombre;
+		TipoCategoria _tipo_categoria;
 };
 
 #endif // VIDEOJUEGOSCONTROLLER_H

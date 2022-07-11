@@ -1,8 +1,9 @@
 #include "classes/NuevaCategoria.h"
 
-NuevaCategoria::NuevaCategoria()
+NuevaCategoria::NuevaCategoria(string _nombre, string _descripcion)
 {
-    //ctor
+	Setnombre(_nombre);
+	Setdescripcion(_descripcion);
 }
 
 NuevaCategoria::~NuevaCategoria()
