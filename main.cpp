@@ -179,6 +179,7 @@ void agregar_categoria()
 
 void suscribirse_a_un_videojuego()
 {
+	cout << "AUN NO HECHO" << endl;
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 
