@@ -9,12 +9,11 @@ class IVideojuegos
 
 		// ver informacion de videojuego
 		virtual ICollection* listarVideojuegos()=0;
-		/*/
 		virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void muestraDatosVideojuego()=0;
 		virtual void muestraTotalHorasVideojuego()=0;
 
-		// eliminar videojuego
+		/*/ eliminar videojuego
 		virtual ICollection* listarVideojuegosPublicadosNoFinalizados()=0;
 		// virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void eliminarVideojuego()=0;

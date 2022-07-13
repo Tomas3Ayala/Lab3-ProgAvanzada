@@ -131,7 +131,28 @@ void UsersControllers::cancelarSuscripcionAVideojuego()
 	//
 }
 
+// asignar puntaje a videojuego
+void UsersControllers::asignarPuntaje(string nombre, int puntaje)
+{
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre)
+		{
+			Jugador* jugador = dynamic_cast<Jugador*>(usuario_seleccionado);
+			ICollection* puntajes = jugador->Getpuntajes();
+			puntajes->add(new AsignaPuntaje(puntaje, videojuego));
+		}
+	}
+}
+
 // otro datos
+IDictionary* UsersControllers::listarUsuarios()
+{
+	return usuarios;
+}
 
 vector<string> UsersControllers::listarNicknames()
 {

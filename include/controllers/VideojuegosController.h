@@ -2,6 +2,9 @@
 #define VIDEOJUEGOSCONTROLLER_H
 
 #include <interfaces/IVideojuegos.h>
+#include <Fabrica.h>
+#include <classes/Jugador.h>
+#include <classes/Partida.h>
 #include <classes/Videojuego.h>
 #include <classes/NuevoGenero.h>
 #include <classes/NuevaPlataforma.h>

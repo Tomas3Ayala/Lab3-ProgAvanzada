@@ -1,6 +1,8 @@
 #include "CategoriaGenero.h"
 #include "CategoriaPlataforma.h"
 #include "NuevaCategoria.h"
+#include "Jugador.h"
+#include "Desarrollador.h"
 #include "Fabrica.h"
 
 void alta_de_usuario();
@@ -15,7 +17,9 @@ void suscribirse_a_un_videojuego();
 
 void agregar_categoria();
 
-void eliminar_videojuego();
+void ver_informacion_de_videojuego();
+
+void asigna_puntaje_a_videojuego();
 
 int main()
 {
@@ -42,12 +46,14 @@ int main()
 						cout << "veo que es un jugador!" << endl;
 						while (1)
 						{
-							cout << "Suscribirse a un videojuego, seguir jugador o salir" << endl;
+							cout << "Suscribirse a un videojuego, asigna puntaje a videojuego, seguir jugador o salir" << endl;
 							cout << "Opcion: ";
 							getline(cin, opcion);
 							if (opcion == "1")
 								suscribirse_a_un_videojuego();
 							else if (opcion == "2")
+								asigna_puntaje_a_videojuego();
+							else if (opcion == "3")
 								seguir_jugador();
 							else
 								break;
@@ -65,8 +71,10 @@ int main()
 								agregar_categoria();
 							else if (opcion == "2")
 								publicar_videojuego();
-							else if (opcion == "3")
-								eliminar_videojuego();
+//							else if (opcion == "3")
+//								eliminar_videojuego();
+							else if (opcion == "4")
+								ver_informacion_de_videojuego();
 							else
 								break;
 						}
@@ -84,10 +92,57 @@ int main()
 	return 0;
 }
 
-void eliminar_videojuego()
+void asigna_puntaje_a_videojuego()
 {
-//	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
-	cout << "AUN NO ESTA HECHO" << endl;
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	cout << "Videojuegos: " << endl;
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		cout << "Nombre: " << videojuego->Getnombre() << endl;
+		cout << "Descripcion: " << videojuego->Getdescripcion() << endl;
+	}
+
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	int puntaje = 0;
+	string nombre, pun;
+	cout << "Nombre del videojuego: ";
+	getline(cin, nombre);
+	cout << "Puntaje a asignar(del 1 al 5): ";
+	getline(cin, pun);
+	if (pun == "1") puntaje = 1;
+	else if (pun == "2") puntaje = 2;
+	else if (pun == "3") puntaje = 3;
+	else if (pun == "4") puntaje = 4;
+	else if (pun == "5") puntaje = 5;
+	else
+	{
+		cout << "Ese puntaje no existe" << endl;
+		return;
+	}
+	users->asignarPuntaje(nombre, puntaje);
+}
+
+void ver_informacion_de_videojuego()
+{
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+
+	cout << "Videojuegos: " << endl;
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		cout << videojuego->Getnombre() << endl;
+	}
+	string nombre;
+	cout << "Nombre del videojuego: ";
+	getline(cin, nombre);
+	games->seleccionarVideojuego(nombre);
+	games->muestraDatosVideojuego();
+	if (dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado()) != nullptr)
+		games->muestraTotalHorasVideojuego();
 }
 
 void agregar_categoria()

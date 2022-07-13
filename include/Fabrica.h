@@ -1,8 +1,8 @@
 #ifndef FABRICA_H
 #define FABRICA_H
-#include "controllers/UsersControllers.h"
-#include "controllers/PartidasController.h"
-#include "controllers/VideojuegosController.h"
+#include "interfaces/IUsers.h"
+#include "interfaces/IPartidas.h"
+#include "interfaces/IVideojuegos.h"
 
 class Fabrica
 {

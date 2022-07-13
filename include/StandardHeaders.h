@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <time.h>
 
 // Collections
 #include "../ColeccionesG/ICollection.h"

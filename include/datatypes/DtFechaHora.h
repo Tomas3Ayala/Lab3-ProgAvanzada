@@ -6,6 +6,15 @@ class DtFechaHora
 {
 	public:
 		DtFechaHora();
+		DtFechaHora(tm tiempo);
+
+		time_t to_time_t();
+
+		bool es_cero();
+		DtFechaHora tiempo_actual();
+		DtFechaHora restar(DtFechaHora otro);
+		DtFechaHora sumar(DtFechaHora otro);
+		int en_horas();
 
 		int Getdia() { return dia; }
 		void Setdia(int val) { dia = val; }

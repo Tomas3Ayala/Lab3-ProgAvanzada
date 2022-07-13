@@ -29,6 +29,85 @@ ICollection* VideojuegosController::listarVideojuegos()
 	return videojuegos;
 }
 
+void VideojuegosController::seleccionarVideojuego(string nombre)
+{
+	nombre_videojuego = nombre;
+}
+
+void VideojuegosController::muestraDatosVideojuego()
+{
+	IDictionary* usuarios = Fabrica::get_instance()->getIUsers()->listarUsuarios();
+	Videojuego* videojuego;
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			int cuanto = 0;
+			float suma_puntaje = 0;
+			// recorre los usuarios
+			for (IIterator* jt = usuarios->getIteratorObj(); jt->hasNext(); jt->next())
+			{
+				Jugador* jugador = dynamic_cast<Jugador*>(jt->getCurrent());
+				if (jugador) // los usuarios son jugadores
+				{
+					ICollection* puntajes = jugador->Getpuntajes(); // obtiene los puntajes que hecho el jugador
+					for (IIterator* kt = puntajes->iterator(); kt->hasNext(); kt->next()) // recorre los puntajes asignados pro el jugador
+					{
+						AsignaPuntaje* asigna_puntaje = dynamic_cast<AsignaPuntaje*>(kt->getCurrent());
+						if (asigna_puntaje->Getvideojuego() == videojuego) // chequea que el videojuego al que le asigna el puntaje es el seleccionado
+						{
+							suma_puntaje += asigna_puntaje->Getpuntaje(); // suma el puntaje
+							cuanto++; // aumenta el contador de puntajes
+						}
+					}
+				}
+			}
+			float puntaje_promedio = suma_puntaje / cuanto; // divide la suma de puntajes por la cantidad que se han hecho
+			videojuego->Setpromedio_puntaje(puntaje_promedio);
+			cout << "Descripcion: " << videojuego->Getdescripcion() << endl;
+			cout << "Costo de suscripcion: " << endl;
+			cout << "  Costo mensual: " << videojuego->Getcosto_suscripcion().Getcosto_mensual() << endl;
+			cout << "  Costo trimestral: " << videojuego->Getcosto_suscripcion().Getcosto_trimestral() << endl;
+			cout << "  Costo anual: " << videojuego->Getcosto_suscripcion().Getcosto_anual() << endl;
+			cout << "  Costo vitalicia: " << videojuego->Getcosto_suscripcion().Getcosto_vitalicia() << endl;
+			cout << "Puntaje promedio: " << videojuego->Getpromedio_puntaje() << endl;
+			cout << "Categorias a las que pertence:" << endl;
+			ICollection* categorias = videojuego->Getcategorias_de_videojuegos();
+			for (IIterator* jt = categorias->iterator(); jt->hasNext(); jt->next())
+			{
+				CategoriaDeVideojuegos* categoria = dynamic_cast<CategoriaDeVideojuegos*>(jt->getCurrent());
+				cout << "  " << categoria->Getnombre() << endl;
+			}
+			cout << "Empresa desarrolladora: " << videojuego->Getempresa_desarrollo() << endl;
+		}
+	}
+}
+
+void VideojuegosController::muestraTotalHorasVideojuego()
+{
+	Videojuego* videojuego;
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			ICollection* partidas = videojuego->Getpartidas();
+			int total_horas = 0;
+			for (IIterator* jt = partidas->iterator(); jt->hasNext(); jt->next())
+			{
+				Partida* partida = dynamic_cast<Partida*>(jt->getCurrent());
+				if (partida->Getfecha_hora_comienzo().es_cero())
+					total_horas += DtFechaHora().tiempo_actual().restar(partida->Getfecha_hora_comienzo()).en_horas();
+				else
+					total_horas += partida->Getfecha_hora_comienzo().sumar(partida->Getduracion_finalizacion()).en_horas();
+			}
+			videojuego->Settotal_horas_videojuego(total_horas);
+			cout << "Total de horas jugadas: " << videojuego->Gettotal_horas_videojuego() << endl;
+		}
+	}
+}
+
 // publicar videojuego
 void VideojuegosController::agregarVideojuego(string nombre, string descripcion, string empresa_lo_desarrollo, DtCostoSuscripcion costo)
 {

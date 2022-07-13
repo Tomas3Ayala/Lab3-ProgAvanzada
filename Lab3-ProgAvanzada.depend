@@ -119,10 +119,12 @@
 	"Par.h"
 	<stdlib.h>
 
-1657501712 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
+1657749292 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
 	"CategoriaGenero.h"
 	"CategoriaPlataforma.h"
 	"NuevaCategoria.h"
+	"Jugador.h"
+	"Desarrollador.h"
 	"Fabrica.h"
 
 1655852764 source:c:\users\tomas\documents\github\lab3-progavanzada\src\categoriadevideojuegos.cpp
@@ -131,10 +133,11 @@
 1656124694 c:\users\tomas\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
 	"StandardHeaders.h"
 
-1656285730 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
+1657745487 c:\users\tomas\documents\github\lab3-progavanzada\include\standardheaders.h
 	<iostream>
 	<vector>
 	<string>
+	<time.h>
 	"../ColeccionesG/ICollection.h"
 	"../ColeccionesG/ListaDicc.h"
 	"../ColeccionesG/Lista.h"
@@ -570,13 +573,16 @@
 1655861836 c:\users\59892\documents\github\lab3-progavanzada\include\partidascontroller.h
 	<IPartidas.h>
 
-1656274121 source:c:\users\tomas\documents\github\lab3-progavanzada\src\fabrica.cpp
+1657748541 source:c:\users\tomas\documents\github\lab3-progavanzada\src\fabrica.cpp
 	"Fabrica.h"
-
-1656277109 c:\users\tomas\documents\github\lab3-progavanzada\include\fabrica.h
 	"controllers/UsersControllers.h"
 	"controllers/PartidasController.h"
 	"controllers/VideojuegosController.h"
+
+1657748368 c:\users\tomas\documents\github\lab3-progavanzada\include\fabrica.h
+	"interfaces/IUsers.h"
+	"interfaces/IPartidas.h"
+	"interfaces/IVideojuegos.h"
 
 1656209512 c:\users\tomas\documents\github\lab3-progavanzada\include\userscontrollers.h
 	<IUsers.h>
@@ -640,13 +646,13 @@
 1657421218 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\partida.h
 	"datatypes/DtFechaHora.h"
 
-1656109786 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtfechahora.h
+1657746687 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtfechahora.h
 	"StandardHeaders.h"
 
 1657422800 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\jugador.cpp
 	"classes/Jugador.h"
 
-1657422493 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\jugador.h
+1657743406 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\jugador.h
 	<classes/Usuario.h>
 	<classes/AsignaPuntaje.h>
 
@@ -713,7 +719,7 @@
 1657497331 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\videojuego.cpp
 	"classes/Videojuego.h"
 
-1657491480 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\videojuego.h
+1657741606 c:\users\tomas\documents\github\lab3-progavanzada\include\classes\videojuego.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1657483926 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtcostosuscripcion.h
@@ -733,29 +739,32 @@
 1656111918 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtdatospartida.h
 	"DtFechaHora.h"
 
-1657497429 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\userscontrollers.cpp
+1657750091 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\userscontrollers.cpp
 	"controllers/UsersControllers.h"
 
-1657497435 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\userscontrollers.h
+1657748951 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\userscontrollers.h
 	<interfaces/IUsers.h>
-	"controllers/VideojuegosController.h"
+	"Fabrica.h"
 	"classes/Jugador.h"
 	"classes/Desarrollador.h"
 
-1657501795 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\iusers.h
+1657749367 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\iusers.h
 	"datatypes/DtCostoSuscripcion.h"
 
-1657497448 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\videojuegoscontroller.cpp
+1657748749 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\videojuegoscontroller.cpp
 	"controllers/VideojuegosController.h"
 
-1657497445 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\videojuegoscontroller.h
+1657748799 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\videojuegoscontroller.h
 	<interfaces/IVideojuegos.h>
+	<Fabrica.h>
+	<classes/Jugador.h>
+	<classes/Partida.h>
 	<classes/Videojuego.h>
 	<classes/NuevoGenero.h>
 	<classes/NuevaPlataforma.h>
 	<classes/NuevaCategoria.h>
 
-1657497440 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
+1657740072 c:\users\tomas\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1657497318 source:c:\users\tomas\documents\github\lab3-progavanzada\src\classes\suscripcion.cpp
@@ -783,7 +792,7 @@
 1656211031 source:c:\users\tomas\documents\github\lab3-progavanzada\src\datatypes\dtdatospartida.cpp
 	"datatypes/DtDatosPartida.h"
 
-1656211037 source:c:\users\tomas\documents\github\lab3-progavanzada\src\datatypes\dtfechahora.cpp
+1657746913 source:c:\users\tomas\documents\github\lab3-progavanzada\src\datatypes\dtfechahora.cpp
 	"datatypes/DtFechaHora.h"
 
 1656211041 source:c:\users\tomas\documents\github\lab3-progavanzada\src\datatypes\dtpartidainfo.cpp
