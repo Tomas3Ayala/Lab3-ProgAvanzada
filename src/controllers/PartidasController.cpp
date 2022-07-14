@@ -124,3 +124,65 @@ void PartidasController::confirmarPartidaQueDeseaAbandonar(int identificador)
 	}
 }
 
+// finalizar partida
+ICollection* PartidasController::obtenerPartidasNoFinalizadasAlInicio()
+{
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	Jugador* jugador = dynamic_cast<Jugador*>(users->get_usuario_seleccionado());
+	ICollection* partidas_iniciadas = jugador->Getpartidas_iniciadas();
+	ICollection* partidas = new Lista;
+	for (IIterator* it = partidas_iniciadas->iterator(); it->hasNext(); it->next())
+	{
+		Partida* partida = dynamic_cast<Partida*>(it->getCurrent());
+		if (partida->Getduracion_finalizacion().es_cero()) // chequea si no ha finalizado la partida
+			partidas->add(partida);
+	}
+	return partidas;
+}
+
+bool PartidasController::mostrarSiEsContinuacion(ICollectible* partida)
+{
+	Individual* individual = dynamic_cast<Individual*>(partida);
+	return !individual->Getes_nueva();
+}
+
+void PartidasController::confirmarPartidaQueDeseaFinalizar(int identificador)
+{
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	Jugador* jugador = dynamic_cast<Jugador*>(users->get_usuario_seleccionado());
+	ICollection* partidas_iniciadas = jugador->Getpartidas_iniciadas();
+	Partida* partida_a_finalizar = nullptr;
+	for (IIterator* it = partidas_iniciadas->iterator(); it->hasNext(); it->next())
+	{
+		Partida* partida = dynamic_cast<Partida*>(it->getCurrent());
+		if (partida->Getnropartida() == identificador)
+		{
+			partida->Setduracion_finalizacion(DtFechaHora().tiempo_actual().restar(partida->Getfecha_hora_comienzo()));
+			partida_a_finalizar = partida;
+			break;
+		}
+	}
+	Multijugador* multijugador = dynamic_cast<Multijugador*>(partida_a_finalizar);
+	if (multijugador)
+	{
+		IDictionary* usuarios = users->listarUsuarios();
+		for (IIterator* it = usuarios->getIteratorObj(); it->hasNext(); it->next())
+		{
+			Jugador* jugador = dynamic_cast<Jugador*>(it->getCurrent());
+			if (jugador)
+			{
+				ICollection* partidas_unidas = jugador->Getpartidas_a_las_que_me_uni();
+				for (IIterator* jt = partidas_unidas->iterator(); jt->hasNext(); jt->next())
+				{
+					Multijugador* m = dynamic_cast<Multijugador*>(jt->getCurrent());
+					if (m == multijugador)
+					{
+						ICollection* partidas_abandonadas = jugador->Getpartidas_abandonadas_multijugador();
+						partidas_abandonadas->add(new AbandonaMultijugador(DtFechaHora().tiempo_actual(), m));
+					}
+				}
+			}
+		}
+	}
+}
+

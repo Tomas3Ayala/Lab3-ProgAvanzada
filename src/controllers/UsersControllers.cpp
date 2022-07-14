@@ -62,18 +62,6 @@ void UsersControllers::iniciarSesion(string email, string contrasenia)
 	if (usuario != nullptr)
 	{
 		usuario_seleccionado = usuario;
-
-		cout << "se seleccione el usuario, el cual es un ";
-		Jugador* jugador;
-		Desarrollador* desarrollador;
-		if ((jugador = dynamic_cast<Jugador*>(usuario)) != nullptr)
-		{
-			cout << "jugador, tiene el siguiente nickname y descripcion: " << endl;
-			cout << "nickname: " << jugador->Getnickname() << endl;
-			cout << "descripcion: " << jugador->Getdescripcion() << endl;
-		}
-		if ((desarrollador = dynamic_cast<Desarrollador*>(usuario)) != nullptr)
-			cout << "desarrollador, trabaja para la siguiente empresa: " << desarrollador->Getempresa_donde_trabaja() << endl;
 	}
 }
 
@@ -144,8 +132,10 @@ void UsersControllers::ingresarDatosSuscripcion(EnumMetodoPago metodo_pago, Enum
 	_tipo_suscripcion = tipo;
 }
 
-void UsersControllers::darDeAltaSuscripcion()
+void UsersControllers::darDeAltaSuscripcion(DtFechaHora __opcional)
 {
+	if (__opcional.es_cero())
+		__opcional = DtFechaHora().tiempo_actual();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 	ICollection* videojuegos = games->listarVideojuegos();
 	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
@@ -159,16 +149,16 @@ void UsersControllers::darDeAltaSuscripcion()
 			switch (_tipo_suscripcion)
 			{
 			case EnumTipoSuscripcion::Mensual:
-				suscripciones->add(new Temporal(costo.Getcosto_mensual(), EnumValidez::UN_MES, _metodo_pago, costo.Getcosto_mensual(), DtFechaHora().tiempo_actual(), videojuego));
+				suscripciones->add(new Temporal(costo.Getcosto_mensual(), EnumValidez::UN_MES, _metodo_pago, costo.Getcosto_mensual(), __opcional, videojuego));
 				break;
 			case EnumTipoSuscripcion::Trimestral:
-				suscripciones->add(new Temporal(costo.Getcosto_trimestral(), EnumValidez::TRIMESTRE, _metodo_pago, costo.Getcosto_trimestral(), DtFechaHora().tiempo_actual(), videojuego));
+				suscripciones->add(new Temporal(costo.Getcosto_trimestral(), EnumValidez::TRIMESTRE, _metodo_pago, costo.Getcosto_trimestral(), __opcional, videojuego));
 				break;
 			case EnumTipoSuscripcion::Anual:
-				suscripciones->add(new Temporal(costo.Getcosto_anual(), EnumValidez::ANIO, _metodo_pago, costo.Getcosto_anual(), DtFechaHora().tiempo_actual(), videojuego));
+				suscripciones->add(new Temporal(costo.Getcosto_anual(), EnumValidez::ANIO, _metodo_pago, costo.Getcosto_anual(), __opcional, videojuego));
 				break;
 			case EnumTipoSuscripcion::Vitalicia:
-				suscripciones->add(new Vitalicia(costo.Getcosto_vitalicia(), _metodo_pago, costo.Getcosto_vitalicia(), DtFechaHora().tiempo_actual(), videojuego));
+				suscripciones->add(new Vitalicia(costo.Getcosto_vitalicia(), _metodo_pago, costo.Getcosto_vitalicia(), __opcional, videojuego));
 				break;
 			}
 		}

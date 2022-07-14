@@ -1,6 +1,7 @@
 #ifndef IUSERS_H
 #define IUSERS_H
 #include "datatypes/DtCostoSuscripcion.h"
+#include "datatypes/DtFechaHora.h"
 
 class IUsers
 {
@@ -27,7 +28,7 @@ class IUsers
 		virtual void finalizarsuscripcion()=0;
 		virtual void cancelarSuscripcionAnterior()=0;
 		virtual void ingresarDatosSuscripcion(EnumMetodoPago metodo_pago, EnumTipoSuscripcion tipo)=0;
-		virtual void darDeAltaSuscripcion()=0;
+		virtual void darDeAltaSuscripcion(DtFechaHora __opcional = DtFechaHora())=0;
 		virtual void cancelarSuscripcionAVideojuego()=0;
 
 		// asignar puntaje a videojuego

@@ -34,7 +34,7 @@ class UsersControllers : public IUsers
 		void finalizarsuscripcion();
 		void cancelarSuscripcionAnterior();
 		void ingresarDatosSuscripcion(EnumMetodoPago metodo_pago, EnumTipoSuscripcion tipo);
-		void darDeAltaSuscripcion();
+		void darDeAltaSuscripcion(DtFechaHora __opcional = DtFechaHora());
 		void cancelarSuscripcionAVideojuego();
 
 		// asignar puntaje a videojuego
