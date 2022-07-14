@@ -119,7 +119,7 @@
 	"Par.h"
 	<stdlib.h>
 
-1657832547 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
+1657832875 source:c:\users\tomas\documents\github\lab3-progavanzada\main.cpp
 	"CategoriaGenero.h"
 	"CategoriaPlataforma.h"
 	"NuevaCategoria.h"
@@ -735,7 +735,7 @@
 1657483926 c:\users\tomas\documents\github\lab3-progavanzada\include\datatypes\dtcostosuscripcion.h
 	"StandardHeaders.h"
 
-1657830111 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\partidascontroller.cpp
+1657832694 source:c:\users\tomas\documents\github\lab3-progavanzada\src\controllers\partidascontroller.cpp
 	"controllers/PartidasController.h"
 
 1657828802 c:\users\tomas\documents\github\lab3-progavanzada\include\controllers\partidascontroller.h
