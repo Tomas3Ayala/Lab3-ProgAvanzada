@@ -2,6 +2,10 @@
 #define PARTIDASCONTROLLER_H
 
 #include <interfaces/IPartidas.h>
+#include "classes/Partida.h"
+#include "classes/Multijugador.h"
+#include "classes/Jugador.h"
+#include "Fabrica.h"
 #include "datatypes/DtDatosPartida.h"
 
 class PartidasController : public IPartidas

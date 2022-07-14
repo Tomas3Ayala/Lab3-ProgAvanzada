@@ -16,6 +16,10 @@ class DtFechaHora
 		DtFechaHora sumar(DtFechaHora otro);
 		int en_horas();
 
+		bool es_antes(DtFechaHora otro); // cheque que this sea una fecha anterior que otro
+
+		string as_string();
+
 		int Getdia() { return dia; }
 		void Setdia(int val) { dia = val; }
 		int Getmes() { return mes; }

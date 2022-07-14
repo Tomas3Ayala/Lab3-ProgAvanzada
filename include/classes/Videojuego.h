@@ -5,7 +5,7 @@
 class Videojuego : public ICollectible
 {
     public:
-        Videojuego(string _nombre, string _descripcion, string _empresa_desarrollo, DtCostoSuscripcion costo, ICollection* categorias);
+        Videojuego(string _nombre, string _descripcion, string _email_desarrollador, string _empresa_desarrollo, DtCostoSuscripcion costo, ICollection* categorias);
         virtual ~Videojuego();
 
         string Getnombre() { return nombre; }
@@ -20,6 +20,8 @@ class Videojuego : public ICollectible
         void Setcosto_suscripcion(DtCostoSuscripcion val) { costo_suscripcion = val; }
         string Getempresa_desarrollo() { return empresa_desarrollo; }
         void Setempresa_desarrollo(string val) { empresa_desarrollo = val; }
+        string Getemail_desarrollador() { return email_desarrollador; }
+        void Setemail_desarrollador(string val) { email_desarrollador = val; }
         ICollection* Getpartidas() { return partidas; }
         void Setpartidas(ICollection* val) { partidas = val; }
         ICollection* Getcategorias_de_videojuegos() { return categorias_de_videojuegos; }
@@ -29,6 +31,7 @@ class Videojuego : public ICollectible
         string nombre;
         string descripcion;
         string empresa_desarrollo;
+        string email_desarrollador;
         int total_horas_videojuego; // este dato se calcula
         float promedio_puntaje; // este tambien se calcula
         DtCostoSuscripcion costo_suscripcion;

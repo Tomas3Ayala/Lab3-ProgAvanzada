@@ -34,10 +34,6 @@ class IUsers
 		// virtual ICollection* listarVideojuegos()=0;
 		virtual void asignarPuntaje(string nombre, int puntaje)=0;
 
-		// Otros
-		// virtual IDictionary* listarNickNameDescripciones()=0;
-		// virtual DtCostoSuscripcion listarSuscripciones(string)=0;
-
 		// Nueva
 		virtual vector<string> listarNicknames()=0;
 		virtual bool datosInicioSesionCorrectos(string email, string contrasenia)=0;

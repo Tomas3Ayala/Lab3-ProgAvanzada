@@ -50,3 +50,42 @@ int DtFechaHora::en_horas()
 {
 	return to_time_t() / 60 / 60;
 }
+
+bool DtFechaHora::es_antes(DtFechaHora otro)
+{
+	if (anio > otro.Getanio())
+		return false;
+	else if (anio == otro.Getanio())
+	{
+		if (mes > otro.Getmes())
+			return false;
+		else if (mes == otro.Getmes())
+		{
+			if (dia > otro.Getdia())
+				return false;
+			else if (dia == otro.Getdia())
+			{
+				if (horas > otro.Gethoras())
+					return false;
+				else if (horas == otro.Gethoras())
+				{
+					if (minutos > otro.Getminutos())
+						return false;
+					else if (minutos == otro.Getminutos())
+					{
+						if (segundos > otro.Getsegundos())
+							return false;
+						else if (segundos == otro.Getsegundos())
+							return true;
+					}
+				}
+			}
+		}
+	}
+	return true;
+}
+
+string DtFechaHora::as_string()
+{
+	return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio) + " " + to_string(horas) + ":" + to_string(minutos) + ":" + to_string(segundos);
+}

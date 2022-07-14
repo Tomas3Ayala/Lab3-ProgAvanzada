@@ -3,7 +3,9 @@
 
 #include <interfaces/IVideojuegos.h>
 #include <Fabrica.h>
+#include <classes/Desarrollador.h>
 #include <classes/Jugador.h>
+#include <classes/AbandonaMultijugador.h>
 #include <classes/Partida.h>
 #include <classes/Videojuego.h>
 #include <classes/NuevoGenero.h>
@@ -62,7 +64,7 @@ class VideojuegosController : public IVideojuegos
         Videojuego* videojuego;
 
 		// publicar videojuego
-		string _descripcion, _empresa_lo_desarrollo;
+		string _descripcion, _email_desarrollador, _empresa_lo_desarrollo;
 		DtCostoSuscripcion costo_de_suscripcion;
 		ICollection* categorias_de_un_videojuego;
 

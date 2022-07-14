@@ -13,13 +13,13 @@ class IVideojuegos
 		virtual void muestraDatosVideojuego()=0;
 		virtual void muestraTotalHorasVideojuego()=0;
 
-		/*/ eliminar videojuego
+		// eliminar videojuego
 		virtual ICollection* listarVideojuegosPublicadosNoFinalizados()=0;
 		// virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void eliminarVideojuego()=0;
 		virtual void cancelarEliminacionDeVideojuego()=0;
 
-		/*/// publicar videojuego
+		// publicar videojuego
 		virtual void agregarVideojuego(string nombre, string descripcion, string empresa_lo_desarrollo, DtCostoSuscripcion costo)=0;
 		virtual ICollection* listarCategoriaGeneros()=0;
 		virtual void agregarCategoriaGenero(ICollectible* genero)=0; // CategoriaGenero
