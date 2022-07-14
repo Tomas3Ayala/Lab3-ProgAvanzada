@@ -4,6 +4,8 @@
 #include <interfaces/IPartidas.h>
 #include "classes/Partida.h"
 #include "classes/AbandonaMultijugador.h"
+#include "classes/Suscripcion.h"
+#include "classes/Temporal.h"
 #include "classes/Individual.h"
 #include "classes/Multijugador.h"
 #include "classes/Jugador.h"
@@ -19,7 +21,6 @@ class PartidasController : public IPartidas
 
 		// realizar comentario
 		ICollection* obtenerPartidas(); // DtPartidaInfo
-		void seleccionarPartida(int identificador);
 		ICollection* listarComentarios(); // DtComentarioRealizado
 		void seleccionComentario(int identificador);
 		void agregarTextoMensaje(string texto);
@@ -32,7 +33,7 @@ class PartidasController : public IPartidas
 		bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida);
 		string mostrarNicknameDelQueLaInicio(ICollectible* partida);
 		vector<string> mostrarNicknamesParticipantes(ICollectible* partida);
-		void confirmarPartidaQueDeseaAbandonar(int identificador);
+		void confirmarPartidaQueDeseaAbandonar(int identificador, DtFechaHora __opcional = DtFechaHora());
 
 		// finalizar partida
 		ICollection* obtenerPartidasNoFinalizadasAlInicio();
@@ -40,20 +41,19 @@ class PartidasController : public IPartidas
 		bool mostrarSiEsContinuacion(ICollectible* partida);
 		// bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida);
 		// vector<string> mostrarNicknamesParticipantes(ICollectible* partida);
-		void confirmarPartidaQueDeseaFinalizar(int identificador);
+		void confirmarPartidaQueDeseaFinalizar(int identificador, DtFechaHora __opcional = DtFechaHora());
 
 		// iniciar partida
-
-		void seleccionarVideojuego(ICollectible* videojuego);
+		void seleccionarVideojuego(string nombre);
 		ICollection* listarPartidasEnOrden(); // partidas individuales
-		// void seleccionarPartida(int identificador);
+		void seleccionarPartida(int identificador);
 		void esTransmitidaEnVivo(bool es_transmitida_en_vivo);
 		vector<string> listarDemasJugadoresConSuscripcionActiva();
 		void agregarParticipante(string nickname);
-		void darDeAltaNuevaPartida();
+		void darDeAltaNuevaPartida(DtFechaHora __opcional = DtFechaHora());
 
 		// Otros
-		ICollection* listarPartidas();
+//		ICollection* listarPartidas();
 
 	private:
 		static PartidasController* instance;
@@ -68,8 +68,10 @@ class PartidasController : public IPartidas
 		int identificador_de_partida_a_abandonar;
 
 		// iniciar partida
+		bool es_individual;
 		int identificador_de_partida_a_continuar;
 		ICollectible* videojuego_para_empezar_partida;
+		ICollection* participantes;
 		bool es_transmitida_en_vivo_multijugador;
 };
 

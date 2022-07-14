@@ -92,8 +92,8 @@ int main()
 								suscribirse_a_un_videojuego();
 							else if (opcion == "2")
 								asigna_puntaje_a_videojuego();
-//							else if (opcion == "3")
-//								iniciar_partida();
+							else if (opcion == "3")
+								iniciar_partida();
 							else if (opcion == "4")
 								abandona_partida_multijugador();
 							else if (opcion == "5")
@@ -170,10 +170,22 @@ void finalizar_partida()
 		cout << "  Fecha en la que se creo: " << datos_partida.Getfecha_comienzo().as_string() << endl;
 		Individual* individual = dynamic_cast<Individual*>(partida);
 		if (individual != nullptr)
-			cout << "  Es continuacion?: " << matches->mostrarSiEsContinuacion(partida) << endl;
+		{
+			cout << "  Es continuacion?: ";
+			if (matches->mostrarSiEsContinuacion(partida))
+				cout << "Si";
+			else
+				cout << "No";
+			cout << endl;
+		}
 		else
 		{
-			cout << "  Es transmitida en vivo?: " << matches->mostrarSiSeEstaTransmitiendoEnVivo(partida) << endl;
+			cout << "  Es transmitida en vivo?: ";
+			if (matches->mostrarSiSeEstaTransmitiendoEnVivo(partida))
+				cout << "Si";
+			else
+				cout << "No";
+			cout << endl;
 			cout << "  Nicknames de los participantes: " << endl;
 			vector<string> nicknames = matches->mostrarNicknamesParticipantes(partida);
 			if (nicknames.size() == 0)
@@ -775,8 +787,11 @@ ICollectible* get_cat(string cat)
 
 void cargar_datos_de_prueba()
 {
+	limpiar();
+	cout << "Cargando datos de prueba... " << endl;
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	IPartidas* matches = Fabrica::get_instance()->getIPartidas();
 	// alta de desarrolladores
 	users->ingresarDatosUsuario("ironhide@mail.com", "123"); // D1
 	users->ingresarempresa("Ironhide Game Studio");
@@ -920,10 +935,47 @@ void cargar_datos_de_prueba()
 	users->asignarPuntaje("Minecraft", 3);
 
 	// partidas individuales
-	// partidas multijugador
-	// abandona partida multijugador
+	users->iniciarSesion("gamer@mail.com", "123");
+	matches->seleccionarVideojuego("KingdomRush");
+	matches->darDeAltaNuevaPartida(DtFechaHora(2, 6, 2021, 9, 0, 0)); // P1
+	matches->confirmarPartidaQueDeseaFinalizar(1, DtFechaHora(2, 6, 2021, 10, 0, 0));
 
-	limpiar();
+	matches->seleccionarVideojuego("KingdomRush");
+	matches->seleccionarPartida(1);
+	matches->darDeAltaNuevaPartida(DtFechaHora(3, 6, 2021, 15, 0, 0)); // P2
+	matches->confirmarPartidaQueDeseaFinalizar(2, DtFechaHora(3, 6, 2021, 16, 0, 0));
+
+	users->iniciarSesion("ari@mail.com", "123");
+	matches->seleccionarVideojuego("Minecraft");
+	matches->darDeAltaNuevaPartida(DtFechaHora(12, 6, 2021, 16, 0, 0)); // P3
+
+	// partidas multijugador
+	users->iniciarSesion("gamer@mail.com", "123");
+	matches->seleccionarVideojuego("Fortnite");
+	matches->esTransmitidaEnVivo(true);
+	matches->agregarParticipante("ari");
+	matches->agregarParticipante("ibai");
+	matches->darDeAltaNuevaPartida(DtFechaHora(5, 6, 2021, 17, 0, 0)); // P4
+	matches->confirmarPartidaQueDeseaFinalizar(4, DtFechaHora(5, 6, 2021, 19, 0, 0));
+
+	matches->seleccionarVideojuego("Fortnite");
+	matches->esTransmitidaEnVivo(true);
+	matches->agregarParticipante("ari");
+	matches->agregarParticipante("ibai");
+	matches->darDeAltaNuevaPartida(DtFechaHora(6, 6, 2021, 17, 0, 0)); // P5
+	matches->confirmarPartidaQueDeseaFinalizar(5, DtFechaHora(6, 6, 2021, 19, 0, 0));
+
+	users->iniciarSesion("ari@mail.com", "123");
+	matches->seleccionarVideojuego("Minecraft");
+	matches->esTransmitidaEnVivo(false);
+	matches->agregarParticipante("ibai");
+	matches->darDeAltaNuevaPartida(DtFechaHora(12, 6, 2021, 20, 0, 0)); // P6
+
+	// abandona partida multijugador
+	matches->confirmarPartidaQueDeseaAbandonar(4, DtFechaHora(5, 6, 2021, 18, 0, 0));
+	matches->confirmarPartidaQueDeseaAbandonar(5, DtFechaHora(6, 6, 2021, 17, 30, 0));
+
+	preguntar_por_enter();
 }
 
 bool iniciar_sesion()
@@ -964,7 +1016,7 @@ void alta_de_usuario()
 {
 	limpiar();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
-	string email, contra;
+	string email, contra, nic, descr, cancel, confirm;
 	cout << "email del usuario: ";
 	getline(cin, email);
 	cout << "contrasenia del usuario: ";
@@ -983,11 +1035,13 @@ void alta_de_usuario()
 	}
 	else
     {
+    	bool existente;
         do
         {
-            cout<<"Por favor ingrese el nick name de jugador con el que desea registrarse ";cout<<endl;
+        	existente = false;
+            cout << "Por favor ingrese el nickname de jugador con el que desea registrarse: ";
             getline(cin, nic);
-            for (string& nick : user->listarNicknames())
+            for (string& nick : users->listarNicknames())
             {
                 if (nick == nic)
                 {
@@ -997,11 +1051,12 @@ void alta_de_usuario()
             }
             if (existente)
             {
-                cout<<"El nickname ingresado no esta disponible, desea cancelar? s/n";cout<<endl;
+                cout<<"El nickname ingresado no esta disponible, desea cancelar? (s/n): ";
                 getline(cin, cancel);
                 if (cancel=="s"||cancel == "S")
                 {
-                    user->cancelarAltaDeUsuario();
+                    users->cancelarAltaDeUsuario();
+                    limpiar();
                     return;
                 }
 
@@ -1009,32 +1064,126 @@ void alta_de_usuario()
         }while(existente);
         cout<<"Ingrese descripcion del jugador";cout<<endl;
         getline(cin, descr);
-        user->ingresardatos(nic,descr);
+        users->ingresardatos(nic,descr);
     }
-        cout<<"Desea confirmar el alta del usuario? s/n";cout<<endl;
-        getline(cin, confirm);
-        if(confirm=="s"||confirm == "S")
-        {
-            user->altaUsuario();
-        }
-        else
-        {
-            user->cancelarAltaDeUsuario();
-        }
 
+	cout<<"Desea confirmar el alta del usuario? s/n";cout<<endl;
+	getline(cin, confirm);
+	if(confirm=="s"||confirm == "S")
+	{
+		users->altaUsuario();
+	}
+	else
+	{
+		users->cancelarAltaDeUsuario();
+	}
 }
 
 void iniciar_partida()
 {
+	limpiar();
     IUsers* users = Fabrica::get_instance()->getIUsers();
+    IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+    IPartidas* matches = Fabrica::get_instance()->getIPartidas();
 	if (users->get_usuario_seleccionado() == nullptr)
 	{
 		cout << "Ningun usuario ha iniciado sesion" << endl;
+		preguntar_por_enter();
 		return;
 	}
 
-    IPartidas* parti = Fabrica::get_instance()->getIPartidas();
-    IVideojuegos* game = Fabrica::get_instance()->getIVideojuegos();
-    cout<<"videojuegos suscriptos: ";cout<<endl;
-    game->listarVideojuegosSuscritos();
+    cout << "videojuegos suscriptos: " << endl;
+	ICollection* suscritos = games->listarVideojuegosSuscritos();
+	if (suscritos->isEmpty())
+	{
+		cout << "No hay" << endl;
+		preguntar_por_enter();
+		return;
+	}
+	for (IIterator* it = suscritos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		cout << videojuego->Getnombre() << endl;
+	}
+	string nombre;
+	cout << "Nombre de videojuego: ";
+	getline(cin, nombre);
+	matches->seleccionarVideojuego(nombre);
+	cout << "Desea iniciar partida individual? (s/n): ";
+	string es_individual;
+	getline(cin, es_individual);
+	if (es_individual == "s")
+	{
+		cout << "Es continuacion de otra partida? (s/n): ";
+		string es_continuacion;
+		getline(cin, es_continuacion);
+		if (es_continuacion == "s")
+		{
+			ICollection* finalizadas = matches->listarPartidasEnOrden();
+			if (finalizadas->isEmpty())
+			{
+				cout << "No se encontraron otras partidas para continuar" << endl;
+			}
+			else
+			{
+				for(IIterator* it = finalizadas->iterator(); it->hasNext(); it->next())
+				{
+					Individual* individual = dynamic_cast<Individual*>(it->getCurrent());
+					cout << "Identificador: " << individual->Getnropartida() << endl;
+					cout << "  Fecha de creacion: " << individual->Getfecha_hora_comienzo().as_string() << endl;
+					cout << "  Duracion: " << individual->Getduracion_finalizacion().as_string_as_duration() << endl;
+				}
+				cout << "Identificador de partida que se va a continuar: ";
+				string identificador;
+				getline(cin, identificador);
+				matches->seleccionarPartida(stoi(identificador));
+			}
+		}
+	}
+	else
+	{
+		cout << "Esta transmitida en vivo? (s/n): ";
+		string es_en_vivo;
+		getline(cin, es_en_vivo);
+		matches->esTransmitidaEnVivo(es_en_vivo == "s");
+		vector<string> nicknames = matches->listarDemasJugadoresConSuscripcionActiva();
+		if (nicknames.size() != 0)
+		{
+			do
+			{
+				if (nicknames.size() == 0)
+					break;
+				limpiar();
+				cout << "Desea agregar participante a la partida? (s/n): ";
+				string agregar;
+				getline(cin, agregar);
+				if (agregar == "s")
+				{
+					cout << "Nicknames: " << endl;
+					for (auto& nick : nicknames)
+						cout << nick << endl;
+					cout << "Nickname del participante a agregar: ";
+					string participante;
+					getline(cin, participante);
+					matches->agregarParticipante(participante);
+					for (size_t i = 0; i < nicknames.size(); i++)
+					{
+						if (nicknames[i] == participante)
+						{
+							nicknames.erase(nicknames.begin() + i);
+							break;
+						}
+					}
+				}
+				else
+					break;
+			} while(1);
+		}
+	}
+	cout << "Desea confirmar la partida? (s/n): ";
+	string confirmar;
+	getline(cin, confirmar);
+	if (confirmar == "s")
+		matches->darDeAltaNuevaPartida();
+	limpiar();
 }

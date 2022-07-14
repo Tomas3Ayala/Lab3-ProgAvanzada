@@ -7,8 +7,10 @@ class DtFechaHora
 	public:
 		DtFechaHora();
 		DtFechaHora(tm tiempo);
+		DtFechaHora(long long segundos);
+		DtFechaHora(int _dia, int _mes, int _anio, int _horas, int _minutos, int _segundos);
 
-		time_t to_time_t();
+		double to_segundos();
 
 		bool es_cero();
 		DtFechaHora tiempo_actual();
@@ -19,6 +21,7 @@ class DtFechaHora
 		bool es_antes(DtFechaHora otro); // cheque que this sea una fecha anterior que otro
 
 		string as_string();
+		string as_string_as_duration();
 
 		int Getdia() { return dia; }
 		void Setdia(int val) { dia = val; }

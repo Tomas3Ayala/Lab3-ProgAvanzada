@@ -24,7 +24,7 @@ class IPartidas
 		virtual bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida)=0;
 		virtual string mostrarNicknameDelQueLaInicio(ICollectible* partida)=0;
 		virtual vector<string> mostrarNicknamesParticipantes(ICollectible* partida)=0;
-		virtual void confirmarPartidaQueDeseaAbandonar(int identificador)=0;
+		virtual void confirmarPartidaQueDeseaAbandonar(int identificador, DtFechaHora __opcional = DtFechaHora())=0;
 
 		// finalizar partida
 		virtual ICollection* obtenerPartidasNoFinalizadasAlInicio()=0;
@@ -32,19 +32,19 @@ class IPartidas
 		virtual bool mostrarSiEsContinuacion(ICollectible* partida)=0;
 		// virtual bool mostrarSiSeEstaTransmitiendoEnVivo(ICollectible* partida)=0;
 		// virtual vector<string> mostrarNicknamesParticipantes(ICollectible* partida)=0;
-		virtual void confirmarPartidaQueDeseaFinalizar(int identificador)=0;
+		virtual void confirmarPartidaQueDeseaFinalizar(int identificador, DtFechaHora __opcional = DtFechaHora())=0;
 
 		// iniciar partida
-		virtual void seleccionarVideojuego(ICollectible* videojuego)=0;
+		virtual void seleccionarVideojuego(string nombre)=0;
 		virtual ICollection* listarPartidasEnOrden()=0; // partidas individuales
-		// virtual void seleccionarPartida(int identificador)=0;
+		virtual void seleccionarPartida(int identificador)=0;
 		virtual void esTransmitidaEnVivo(bool es_transmitida_en_vivo)=0;
 		virtual vector<string> listarDemasJugadoresConSuscripcionActiva()=0;
 		virtual void agregarParticipante(string nickname)=0;
-		virtual void darDeAltaNuevaPartida()=0;
+		virtual void darDeAltaNuevaPartida(DtFechaHora __opcional = DtFechaHora())=0;
 
 		// Otros
-		virtual ICollection* listarPartidas()=0;
+//		virtual ICollection* listarPartidas()=0;
 		//*/
 
 };

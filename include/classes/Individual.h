@@ -7,7 +7,7 @@
 class Individual : public Partida
 {
     public:
-        Individual();
+        Individual(bool _es_nueva, Individual* continua, DtFechaHora _fecha_hora_comienzo);
         virtual ~Individual();
 
         bool Getes_nueva() { return es_nueva; }

@@ -2,7 +2,7 @@
 
 Temporal::Temporal(float cuota, EnumValidez periodo, EnumMetodoPago metodo, float momento, DtFechaHora _fecha, Videojuego* _videojuego)
 {
-	fecha_cancelacion = DtFechaHora();
+	fecha_cancelacion = DtFechaHora(10, 10, 10000, 0, 0, 0); // ARREGLAR
 	estado = true;
 	valor_cuota = cuota;
 	periodo_validez = periodo;

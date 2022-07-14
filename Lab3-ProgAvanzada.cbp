@@ -86,7 +86,6 @@
 		<Unit filename="include/classes/PorDefectoPlataforma.h" />
 		<Unit filename="include/classes/Suscripcion.h" />
 		<Unit filename="include/classes/Temporal.h" />
-		<Unit filename="include/classes/TransmitidaVivo.h" />
 		<Unit filename="include/classes/Usuario.h" />
 		<Unit filename="include/classes/Videojuego.h" />
 		<Unit filename="include/classes/Vitalicia.h" />
@@ -121,7 +120,6 @@
 		<Unit filename="src/classes/PorDefectoPlataforma.cpp" />
 		<Unit filename="src/classes/Suscripcion.cpp" />
 		<Unit filename="src/classes/Temporal.cpp" />
-		<Unit filename="src/classes/TransmitidaVivo.cpp" />
 		<Unit filename="src/classes/Usuario.cpp" />
 		<Unit filename="src/classes/Videojuego.cpp" />
 		<Unit filename="src/classes/Vitalicia.cpp" />

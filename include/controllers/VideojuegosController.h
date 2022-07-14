@@ -7,6 +7,7 @@
 #include <classes/Jugador.h>
 #include <classes/AbandonaMultijugador.h>
 #include <classes/Partida.h>
+#include <classes/Temporal.h>
 #include <classes/Videojuego.h>
 #include <classes/NuevoGenero.h>
 #include <classes/NuevaPlataforma.h>
@@ -49,6 +50,9 @@ class VideojuegosController : public IVideojuegos
 		void darDeAltaNuevaCategoria();
 		void cancelarNuevaCategoria();
 
+		// iniciar partida
+		ICollection* listarVideojuegosSuscritos();
+
 		// Demas
 		DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego);
 
@@ -74,10 +78,6 @@ class VideojuegosController : public IVideojuegos
 		// agregar categoria
 		string _nombre;
 		TipoCategoria _tipo_categoria;
-
-		// iniciar partida
-		ICollection* listarVideojuegosSuscritos();
-		//seleccionar videojuego esta declara al principio en suscribirse a videojuego
 };
 
 #endif // VIDEOJUEGOSCONTROLLER_H

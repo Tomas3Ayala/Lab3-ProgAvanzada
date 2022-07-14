@@ -38,7 +38,6 @@ class IVideojuegos
 		virtual void cancelarNuevaCategoria()=0;
 		// iniciar partida
 		virtual ICollection* listarVideojuegosSuscritos()=0;
-		virtual void seleccionarVideojuego(string nombre)=0;
 
 		// Demas
 		virtual DtCostoSuscripcion listarSuscripciones(ICollectible* videojuego)=0;
