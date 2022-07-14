@@ -3,6 +3,8 @@
 #include "NuevaCategoria.h"
 #include "Fabrica.h"
 
+void iniciar_partida();
+
 void alta_de_usuario();
 
 bool iniciar_sesion();
@@ -28,6 +30,7 @@ int main()
 		getline(cin, opcion);
 		if (opcion == "1")
 			alta_de_usuario();
+
 		else if (opcion == "2")
 		{
 			if (iniciar_sesion())
@@ -401,62 +404,85 @@ bool iniciar_sesion()
 
 void alta_de_usuario()
 {
-	IUsers* users = Fabrica::get_instance()->getIUsers();
-	string email, contra;
-	cout << "email del usuario: ";
-	getline(cin, email);
-	cout << "contrasenia del usuario: ";
-	getline(cin, contra);
-	users->ingresarDatosUsuario(email, contra);
+	IUsers* user = Fabrica::get_instance()->getIUsers();//primero creo una instancia llamada user que va a ser igual a una nueva instancia de user esto nose si es que trae todos los usuarios
+	string desa, juga, cancel, confirm;//estas variables las utsaremos para guardar la respuesta del usuario
+    string mail, contra; //declaro las variables que voy a pedir en un principio
+    string empresa, nic, descr; //variables para cuando sea desarrollador o jugador
+    bool existente = false;//esta variable sera usada para confirmar si esta el nick name ya existe en caso que sea jugador
+	//pido al usuario que ingrese las variables y las guardo
+	cout<<"Por favor, ingrese su email";cout<<endl;
+	getline (cin, mail);
+	cout<<"Por favor, ingrese una clave para el usuario";cout<<endl;
+	getline (cin, contra);
+	//una vez consigo los datos llamo a funcion para ingresarlos detallada en el digrama de secuencia
+	//debo utilizar la intancia user creada en un principio
+	user->ingresarDatosUsuario(mail,contra);//los datos son enviados al controlador que los guarda en memoria
+	//continuo con el caso de uso y lo siguiente es preguntar que tipo de usuario sera
 
-	string es_desarrollador;
-	cout << "Sos desarrollador? (s/n): ";
-	getline(cin, es_desarrollador);
-	if (es_desarrollador == "s")
-	{
-		string empresa;
-		cout << "Nombre de la empresa en la que trabaja: ";
-		getline(cin, empresa);
-		users->ingresarempresa(empresa);
-	}
+	cout<<"Desea crear un usuario desarrollador? s/n";cout<<endl;
+	getline(cin,desa);
+	if (desa=="s"||desa=="S")
+    {
+       cout<<"Por favor ingrese el nombre de la empresa para la cual trabaja";cout<<endl;
+       getline(cin, empresa);
+       user->ingresarempresa(empresa);//envio el nombre d ela empresa al controlador
+    }
+
 	else
+    {
+        do
+        {
+            cout<<"Por favor ingrese el nick name de jugador con el que desea registrarse ";cout<<endl;
+            getline(cin, nic);
+            for (string& nick : user->listarNicknames())
+            {
+                if (nick == nic)
+                {
+                    existente = true;
+                    break;
+                }
+            }
+            if (existente)
+            {
+                cout<<"El nickname ingresado no esta disponible, desea cancelar? s/n";cout<<endl;
+                getline(cin, cancel);
+                if (cancel=="s"||cancel == "S")
+                {
+                    user->cancelarAltaDeUsuario();
+                    return;
+                }
+
+            }
+        }while(existente);
+        cout<<"Ingrese descripcion del jugador";cout<<endl;
+        getline(cin, descr);
+        user->ingresardatos(nic,descr);
+    }
+        cout<<"Desea confirmar el alta del usuario? s/n";cout<<endl;
+        getline(cin, confirm);
+        if(confirm=="s"||confirm == "S")
+        {
+            user->altaUsuario();
+        }
+        else
+        {
+            user->cancelarAltaDeUsuario();
+        }
+
+}
+
+void iniciar_partida()
+{
+    IUsers* users = Fabrica::get_instance()->getIUsers();
+	if (users->get_usuario_seleccionado() == nullptr)
 	{
-		bool esta_repetido = false;
-		string nickname, descripcion;
-		do
-		{
-			cout << "Nickname: ";
-			getline(cin, nickname);
-			esta_repetido = false;
-			for (string& nick : users->listarNicknames())
-			{
-				if (nick == nickname)
-				{
-					esta_repetido = true;
-					break;
-				}
-			}
-			if (esta_repetido)
-			{
-				string cancelo;
-				cout << "Nickname ya elegido, desea cancelar? (s/n): ";
-				getline(cin, cancelo);
-				if (cancelo == "s")
-				{
-					users->cancelarAltaDeUsuario();
-					return;
-				}
-			}
-		} while (esta_repetido);
-		cout << "Descripcion: ";
-		getline(cin, descripcion);
-		users->ingresardatos(nickname, descripcion);
+		cout << "Ningun usuario ha iniciado sesion" << endl;
+		return;
 	}
-	string confirmo;
-	cout << "Desea confirmar alta de usuario? (s/n): ";
-	getline(cin, confirmo);
-	if (confirmo == "s")
-		users->altaUsuario();
-	else
-		users->cancelarAltaDeUsuario();
+
+    IPartidas* parti = Fabrica::get_instance()->getIPartidas();
+    IVideojuegos* game = Fabrica::get_instance()->getIVideojuegos();
+    cout<<"videojuegos suscriptos: ";cout<<endl;
+    game->listarVideojuegosSuscritos();
+
 }

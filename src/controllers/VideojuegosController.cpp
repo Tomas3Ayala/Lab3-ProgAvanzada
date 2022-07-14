@@ -1,4 +1,5 @@
 #include "controllers/VideojuegosController.h"
+#include "Fabrica.h"
 
 VideojuegosController* VideojuegosController::instance = nullptr;
 
@@ -179,4 +180,47 @@ DtCostoSuscripcion VideojuegosController::listarSuscripciones(ICollectible* vide
 {
 	Videojuego* vid = dynamic_cast<Videojuego*>(videojuego);
 	return vid->Getcosto_suscripcion();
+}
+
+//iniciar Partida
+ICollection* VideojuegosController::listarVideojuegosSuscritos()
+{   IUsers* users = Fabrica::get_instance()->getIUsers();
+    ICollection* juegos = new Lista;
+
+   for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		bool suscripto = false;
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		Jugador* jugador = dynamic_cast<Jugador*>(users->get_usuario_seleccionado());
+		for (IIterator* jt = jugador->Getsuscripciones()->iterator(); jt->hasNext(); jt->next())
+		{
+			Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(jt->getCurrent());
+			if (videojuego == suscripcion->Getvideojuego())
+			{
+				juegos->add(videojuego);
+			}
+		}
+
+	}
+	return juegos;
+}
+
+void VideojuegosController::seleccionarVideojuego(string nombre)
+{
+    IIterator* it = videojuegos->iterator();
+	Videojuego* game;
+	for (; it->hasNext(); it->next())
+	{
+		ICollectible* obj = it->getCurrent();
+		if ((game = dynamic_cast<Videojuego*>(obj)) != nullptr)
+		{
+			if (game->Getnombre() == nombre)
+            {
+                videojuego=game;
+                break;
+            }
+
+		}
+	}
+
 }
