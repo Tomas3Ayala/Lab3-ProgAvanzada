@@ -34,8 +34,7 @@ class IPartidas
 		// virtual vector<string> mostrarNicknamesParticipantes(ICollectible* partida)=0;
 		virtual void confirmarPartidaQueDeseaFinalizar(int identificador)=0;
 
-		/*/ iniciar partida
-		virtual ICollection* listarVideojuegosSuscritos()=0;
+		// iniciar partida
 		virtual void seleccionarVideojuego(ICollectible* videojuego)=0;
 		virtual ICollection* listarPartidasEnOrden()=0; // partidas individuales
 		// virtual void seleccionarPartida(int identificador)=0;

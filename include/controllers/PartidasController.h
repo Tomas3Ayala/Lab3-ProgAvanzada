@@ -43,7 +43,7 @@ class PartidasController : public IPartidas
 		void confirmarPartidaQueDeseaFinalizar(int identificador);
 
 		// iniciar partida
-		ICollection* listarVideojuegosSuscritos();
+
 		void seleccionarVideojuego(ICollectible* videojuego);
 		ICollection* listarPartidasEnOrden(); // partidas individuales
 		// void seleccionarPartida(int identificador);

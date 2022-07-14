@@ -9,6 +9,8 @@
 #include "Individual.h"
 #include "Fabrica.h"
 
+void iniciar_partida();
+
 void alta_de_usuario();
 
 bool iniciar_sesion();
@@ -61,6 +63,7 @@ int main()
 		getline(cin, opcion);
 		if (opcion == "1")
 			alta_de_usuario();
+
 		else if (opcion == "2")
 		{
 			if (iniciar_sesion())
@@ -814,9 +817,9 @@ void cargar_datos_de_prueba()
 	games->darDeAltaNuevaCategoria(); // C5
 	games->agregarNuevaCategoria("Estrategia", "Juegos de estrategia", TipoCategoria::Genero);
 	games->darDeAltaNuevaCategoria(); // C6
-	games->agregarNuevaCategoria("Teen", "Su contenido está dirigido a jóvenes de 13 años en adelante", TipoCategoria::Otro);
+	games->agregarNuevaCategoria("Teen", "Su contenido estÃ¡ dirigido a jÃ³venes de 13 aÃ±os en adelante", TipoCategoria::Otro);
 	games->darDeAltaNuevaCategoria(); // C7
-	games->agregarNuevaCategoria("E", "Su contenido está dirigido para todo público", TipoCategoria::Otro);
+	games->agregarNuevaCategoria("E", "Su contenido estÃ¡ dirigido para todo pÃºblico", TipoCategoria::Otro);
 	games->darDeAltaNuevaCategoria(); // C8
 	games->agregarNuevaCategoria("Accion", "Juegos de accion", TipoCategoria::Genero);
 	games->darDeAltaNuevaCategoria(); // C9
@@ -979,46 +982,59 @@ void alta_de_usuario()
 		users->ingresarempresa(empresa);
 	}
 	else
+    {
+        do
+        {
+            cout<<"Por favor ingrese el nick name de jugador con el que desea registrarse ";cout<<endl;
+            getline(cin, nic);
+            for (string& nick : user->listarNicknames())
+            {
+                if (nick == nic)
+                {
+                    existente = true;
+                    break;
+                }
+            }
+            if (existente)
+            {
+                cout<<"El nickname ingresado no esta disponible, desea cancelar? s/n";cout<<endl;
+                getline(cin, cancel);
+                if (cancel=="s"||cancel == "S")
+                {
+                    user->cancelarAltaDeUsuario();
+                    return;
+                }
+
+            }
+        }while(existente);
+        cout<<"Ingrese descripcion del jugador";cout<<endl;
+        getline(cin, descr);
+        user->ingresardatos(nic,descr);
+    }
+        cout<<"Desea confirmar el alta del usuario? s/n";cout<<endl;
+        getline(cin, confirm);
+        if(confirm=="s"||confirm == "S")
+        {
+            user->altaUsuario();
+        }
+        else
+        {
+            user->cancelarAltaDeUsuario();
+        }
+
+}
+
+void iniciar_partida()
+{
+    IUsers* users = Fabrica::get_instance()->getIUsers();
+	if (users->get_usuario_seleccionado() == nullptr)
 	{
-		bool esta_repetido = false;
-		string nickname, descripcion;
-		do
-		{
-			cout << "Nickname: ";
-			getline(cin, nickname);
-			esta_repetido = false;
-			for (string& nick : users->listarNicknames())
-			{
-				if (nick == nickname)
-				{
-					esta_repetido = true;
-					break;
-				}
-			}
-			if (esta_repetido)
-			{
-				string cancelo;
-				cout << "Nickname ya elegido, desea cancelar? (s/n): ";
-				getline(cin, cancelo);
-				if (cancelo == "s")
-				{
-					users->cancelarAltaDeUsuario();
-					limpiar();
-					return;
-				}
-				limpiar();
-			}
-		} while (esta_repetido);
-		cout << "Descripcion: ";
-		getline(cin, descripcion);
-		users->ingresardatos(nickname, descripcion);
+		cout << "Ningun usuario ha iniciado sesion" << endl;
+		return;
 	}
-	string confirmo;
-	cout << "Desea confirmar alta de usuario? (s/n): ";
-	getline(cin, confirmo);
-	if (confirmo == "s")
-		users->altaUsuario();
-	else
-		users->cancelarAltaDeUsuario();
-	limpiar();
+
+    IPartidas* parti = Fabrica::get_instance()->getIPartidas();
+    IVideojuegos* game = Fabrica::get_instance()->getIVideojuegos();
+    cout<<"videojuegos suscriptos: ";cout<<endl;
+    game->listarVideojuegosSuscritos();
 }

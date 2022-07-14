@@ -412,8 +412,11 @@
 	"Par.h"
 	<stdlib.h>
 
-1655777623 source:c:\users\59892\documents\github\lab3-progavanzada\main.cpp
-	<iostream>
+1657756639 source:c:\users\59892\documents\github\lab3-progavanzada\main.cpp
+	"CategoriaGenero.h"
+	"CategoriaPlataforma.h"
+	"NuevaCategoria.h"
+	"Fabrica.h"
 
 1655840549 source:c:\users\59892\documents\github\lab3-progavanzada\src\categoriadevideojuegos.cpp
 	"CategoriaDeVideojuegos.h"
@@ -421,11 +424,14 @@
 1655861753 c:\users\59892\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
 	"StandardHeaders.h"
 
-1655859871 c:\users\59892\documents\github\lab3-progavanzada\include\standardheaders.h
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\standardheaders.h
 	<iostream>
 	<vector>
 	<string>
 	"../ColeccionesG/ICollection.h"
+	"../ColeccionesG/ListaDicc.h"
+	"../ColeccionesG/Lista.h"
+	"../ColeccionesG/KeyString.h"
 
 1655840602 source:c:\users\59892\documents\github\lab3-progavanzada\src\categoriagenero.cpp
 	"CategoriaGenero.h"
@@ -845,4 +851,228 @@
 	"StandardHeaders.h"
 	"Multijugador.h"
 	"datatypes/DtFechaHora.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\categoriadevideojuegos.cpp
+	"classes/CategoriaDeVideojuegos.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\categoriadevideojuegos.h
+	"StandardHeaders.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\categoriagenero.cpp
+	"classes/CategoriaGenero.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\categoriagenero.h
+	<classes/CategoriaDeVideojuegos.h>
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\categoriaplataforma.cpp
+	"classes/CategoriaPlataforma.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\categoriaplataforma.h
+	"CategoriaDeVideojuegos.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\comentario.cpp
+	"classes/Comentario.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\comentario.h
+	"StandardHeaders.h"
+
+1656808399 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\desarrollador.cpp
+	"classes/Desarrollador.h"
+
+1656808399 c:\users\59892\documents\github\lab3-progavanzada\include\classes\desarrollador.h
+	<classes/Usuario.h>
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\usuario.h
+	"classes/Suscripcion.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\suscripcion.h
+	"datatypes/DtFechaHora.h"
+	"classes/Videojuego.h"
+
+1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtfechahora.h
+	"StandardHeaders.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\videojuego.h
+	"datatypes/DtCostoSuscripcion.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtcostosuscripcion.h
+	"StandardHeaders.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\individual.cpp
+	"classes/Individual.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\individual.h
+	<classes/Partida.h>
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\partida.h
+	"datatypes/DtFechaHora.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\multijugador.cpp
+	"classes/Multijugador.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\multijugador.h
+	<classes/Partida.h>
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\partida.cpp
+	"classes/Partida.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\pordefectogenero.cpp
+	"classes/PorDefectoGenero.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\pordefectogenero.h
+	<classes/CategoriaGenero.h>
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\pordefectoplataforma.cpp
+	"classes/PorDefectoPlataforma.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\pordefectoplataforma.h
+	<classes/CategoriaPlataforma.h>
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\temporal.cpp
+	"classes/Temporal.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\temporal.h
+	<classes/Suscripcion.h>
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\transmitidavivo.cpp
+	"classes/TransmitidaVivo.h"
+
+1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\transmitidavivo.h
+	<classes/Multijugador.h>
+
+1656808399 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\usuario.cpp
+	"classes/Usuario.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\vitalicia.cpp
+	"classes/Vitalicia.h"
+
+1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\classes\vitalicia.h
+	<classes/Suscripcion.h>
+
+1657752346 source:c:\users\59892\documents\github\lab3-progavanzada\src\controllers\partidascontroller.cpp
+	"controllers/PartidasController.h"
+
+1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\controllers\partidascontroller.h
+	<interfaces/IPartidas.h>
+	"datatypes/DtDatosPartida.h"
+
+1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ipartidas.h
+	"datatypes/DtFechaHora.h"
+	"datatypes/DtDatosPartida.h"
+
+1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtdatospartida.h
+	"DtFechaHora.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\datatypes\dtcomentariorealizado.cpp
+	"datatypes/DtComentarioRealizado.h"
+
+1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtcomentariorealizado.h
+	"DtFechaHora.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\datatypes\dtcostosuscripcion.cpp
+	"datatypes/DtCostoSuscripcion.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\datatypes\dtdatospartida.cpp
+	"datatypes/DtDatosPartida.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\datatypes\dtfechahora.cpp
+	"datatypes/DtFechaHora.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\datatypes\dtpartidainfo.cpp
+	"datatypes/DtPartidaInfo.h"
+
+1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtpartidainfo.h
+	"StandardHeaders.h"
+
+1657753794 source:c:\users\59892\documents\github\lab3-progavanzada\src\fabrica.cpp
+	"Fabrica.h"
+	"controllers/UsersControllers.h"
+	"controllers/PartidasController.h"
+	"controllers/VideojuegosController.h"
+
+1657753833 c:\users\59892\documents\github\lab3-progavanzada\include\fabrica.h
+	"controllers/UsersControllers.h"
+	"controllers/PartidasController.h"
+	"controllers/VideojuegosController.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\controllers\userscontrollers.h
+	<interfaces/IUsers.h>
+	"controllers/VideojuegosController.h"
+	"classes/Jugador.h"
+	"classes/Desarrollador.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\iusers.h
+	"datatypes/DtCostoSuscripcion.h"
+
+1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\controllers\videojuegoscontroller.h
+	<interfaces/IVideojuegos.h>
+	<classes/Videojuego.h>
+	<classes/NuevoGenero.h>
+	<classes/NuevaPlataforma.h>
+	<classes/NuevaCategoria.h>
+
+1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
+	"datatypes/DtCostoSuscripcion.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\nuevogenero.h
+	<classes/CategoriaGenero.h>
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\nuevaplataforma.h
+	<classes/CategoriaPlataforma.h>
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\nuevacategoria.h
+	"CategoriaDeVideojuegos.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\jugador.h
+	<classes/Usuario.h>
+	<classes/AsignaPuntaje.h>
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\asignapuntaje.h
+	"StandardHeaders.h"
+	"Videojuego.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\interfaces\ipartidas.cpp
+	"interfaces/IPartidas.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\interfaces\iusers.cpp
+	"interfaces/IUsers.h"
+
+1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\interfaces\ivideojuegos.cpp
+	"interfaces/IVideojuegos.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\abandonamultijugador.cpp
+	"AbandonaMultijugador.h"
+
+1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\abandonamultijugador.h
+	"StandardHeaders.h"
+	"Multijugador.h"
+	"datatypes/DtFechaHora.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\asignapuntaje.cpp
+	"AsignaPuntaje.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\jugador.cpp
+	"classes/Jugador.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\nuevacategoria.cpp
+	"classes/NuevaCategoria.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\nuevaplataforma.cpp
+	"classes/NuevaPlataforma.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\nuevogenero.cpp
+	"classes/NuevoGenero.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\suscripcion.cpp
+	"classes/Suscripcion.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\videojuego.cpp
+	"classes/Videojuego.h"
+
+1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\controllers\userscontrollers.cpp
+	"controllers/UsersControllers.h"
+
+1657754463 source:c:\users\59892\documents\github\lab3-progavanzada\src\controllers\videojuegoscontroller.cpp
+	"controllers/VideojuegosController.h"
+	"Fabrica.h"
 
