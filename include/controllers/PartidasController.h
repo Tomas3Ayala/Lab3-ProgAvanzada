@@ -3,6 +3,8 @@
 
 #include <interfaces/IPartidas.h>
 #include "classes/Partida.h"
+#include "classes/AbandonaMultijugador.h"
+#include "classes/Individual.h"
 #include "classes/Multijugador.h"
 #include "classes/Jugador.h"
 #include "Fabrica.h"

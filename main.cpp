@@ -6,6 +6,7 @@
 #include "Vitalicia.h"
 #include "Temporal.h"
 #include "Partida.h"
+#include "Individual.h"
 #include "Fabrica.h"
 
 void iniciar_partida();
@@ -32,13 +33,32 @@ void eliminar_videojuego();
 
 void abandona_partida_multijugador();
 
+void finalizar_partida();
+
+void limpiar()
+{
+	system("cls");
+}
+
+void preguntar_por_enter()
+{
+	string a;
+	cout << "Presione enter para continuar... " << endl;
+	getline(cin, a);
+	limpiar();
+}
+
 int main()
 {
 	bool salir = false;
 	while (!salir)
 	{
 		string opcion;
-		cout << "Alta de usuario, Iniciar sesion, Cargar datos de prueba o salir" << endl;
+		cout << "Opciones: " << endl;
+		cout << "1. Alta de usuario" << endl;
+		cout << "2. Iniciar sesion" << endl;
+		cout << "3. Cargar datos de prueba" << endl;
+		cout << "4. Salir" << endl;
 		cout << "Opcion: ";
 		getline(cin, opcion);
 		if (opcion == "1")
@@ -55,32 +75,50 @@ int main()
 					Jugador* jugador = dynamic_cast<Jugador*>(usuario);
 					if (jugador)
 					{
-						cout << "veo que es un jugador!" << endl;
 						while (1)
 						{
-							cout << "Suscribirse a un videojuego, asigna puntaje a videojuego, abandona partida multijugador, ver informacion de videojuego, seguir jugador o salir" << endl;
+							cout << "Opciones del jugador:" << endl;
+							cout << "1. Suscribirse a un videojuego" << endl;
+							cout << "2. Asignar puntaje a videojuego" << endl;
+							cout << "3. Iniciar partida" << endl;
+							cout << "4. Abandona partida multijugador" << endl;
+							cout << "5. Finalizar partida" << endl;
+							cout << "6. Ver informacion de videojuego" << endl;
+							cout << "7. Seguir jugador" << endl;
+							cout << "8. Salir" << endl;
 							cout << "Opcion: ";
 							getline(cin, opcion);
 							if (opcion == "1")
 								suscribirse_a_un_videojuego();
 							else if (opcion == "2")
 								asigna_puntaje_a_videojuego();
-							else if (opcion == "3")
-								abandona_partida_multijugador();
+//							else if (opcion == "3")
+//								iniciar_partida();
 							else if (opcion == "4")
-								ver_informacion_de_videojuego();
+								abandona_partida_multijugador();
 							else if (opcion == "5")
+								finalizar_partida();
+							else if (opcion == "6")
+								ver_informacion_de_videojuego();
+							else if (opcion == "7")
 								seguir_jugador();
 							else
+							{
+								limpiar();
 								break;
+							}
 						}
 					}
 					else
 					{
-						cout << "veo que es un desarrollador!" << endl;
 						while (1)
 						{
-							cout << "Agregar categoria, publicar videojuego, eliminar videojuego, ver informacion de videojuego, o salir" << endl;
+							cout << "Opciones del desarrollador:" << endl;
+							cout << "1. Agregar categoria" << endl;
+							cout << "2. Publicar videojuego" << endl;
+							cout << "3. Eliminar videojuego" << endl;
+							cout << "4. Ver informacion de videojuego" << endl;
+							cout << "5. Salir" << endl;
 							cout << "Opcion: ";
 							getline(cin, opcion);
 							if (opcion == "1")
@@ -92,12 +130,13 @@ int main()
 							else if (opcion == "4")
 								ver_informacion_de_videojuego();
 							else
+							{
+								limpiar();
 								break;
+							}
 						}
 					}
 				}
-				else
-					cout << "pues no" << endl;
 			}
 		}
 		else if (opcion == "3")
@@ -110,11 +149,58 @@ int main()
 	return 0;
 }
 
+void finalizar_partida()
+{
+	limpiar();
+	IPartidas* matches = Fabrica::get_instance()->getIPartidas();
+	ICollection* partidas = matches->obtenerPartidasNoFinalizadasAlInicio();
+	cout << "Partidas no finalizadas:" << endl;
+	if (partidas->isEmpty())
+	{
+		cout << "No hay" << endl;
+		preguntar_por_enter();
+		return;
+	}
+	for(IIterator* it = partidas->iterator(); it->hasNext(); it->next())
+	{
+		Partida* partida = dynamic_cast<Partida*>(it->getCurrent());
+		DtDatosPartida datos_partida = matches->mostrarDatosPartida(partida);
+		cout << "Identificador: " << datos_partida.Getidentificador() << endl;
+		cout << "  Nombre de videojuego: " << datos_partida.Getnombre_videojuego() << endl;
+		cout << "  Fecha en la que se creo: " << datos_partida.Getfecha_comienzo().as_string() << endl;
+		Individual* individual = dynamic_cast<Individual*>(partida);
+		if (individual != nullptr)
+			cout << "  Es continuacion?: " << matches->mostrarSiEsContinuacion(partida) << endl;
+		else
+		{
+			cout << "  Es transmitida en vivo?: " << matches->mostrarSiSeEstaTransmitiendoEnVivo(partida) << endl;
+			cout << "  Nicknames de los participantes: " << endl;
+			vector<string> nicknames = matches->mostrarNicknamesParticipantes(partida);
+			if (nicknames.size() == 0)
+				cout << "    No hay participantes" << endl;
+			for (auto& nick : nicknames)
+				cout << "    " << nick << endl;
+		}
+	}
+	string identificador;
+	cout << "Identificador de partida a finalizar: ";
+	getline(cin, identificador);
+	matches->confirmarPartidaQueDeseaFinalizar(stoi(identificador));
+	limpiar();
+}
+
 void abandona_partida_multijugador()
 {
+	limpiar();
 	IPartidas* matches = Fabrica::get_instance()->getIPartidas();
 	ICollection* partidas = matches->listarPartidasNoFinalizadasMultijugador();
 	cout << "Partidas no finalizadas multijugador: " << endl;
+	if (partidas->isEmpty())
+	{
+		cout << "No hay" << endl;
+		preguntar_por_enter();
+		return;
+	}
 	for (IIterator* it = partidas->iterator(); it->hasNext(); it->next())
 	{
 		Partida* partida = dynamic_cast<Partida*>(it->getCurrent());
@@ -126,7 +212,7 @@ void abandona_partida_multijugador()
 		cout << "Identificador: " << datos_partida.Getidentificador() << endl;
 		cout << "  Nombre de videojuego: " << datos_partida.Getnombre_videojuego() << endl;
 		cout << "  Fecha en la que se creo: " << datos_partida.Getfecha_comienzo().as_string() << endl;
-		cout << "  Esta en vivo?: ";
+		cout << "  Es transmitida en vivo?: ";
 		if (en_vivo)
 			cout << "Si";
 		else
@@ -140,13 +226,15 @@ void abandona_partida_multijugador()
 			cout << "    " << nick << endl;
 	}
 	string identificador;
-	cout << "Identificador de partida a finalizar: ";
+	cout << "Identificador de partida a abandonar: ";
 	getline(cin, identificador);
 	matches->confirmarPartidaQueDeseaAbandonar(stoi(identificador));
+	limpiar();
 }
 
 void eliminar_videojuego()
 {
+	limpiar();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 	ICollection* no_finalizados = games->listarVideojuegosPublicadosNoFinalizados();
 	cout << "Nombres de videojuegos publicados finalizados:" << endl;
@@ -158,6 +246,7 @@ void eliminar_videojuego()
 	if (no_finalizados->isEmpty())
 	{
 		cout << "No hay" << endl;
+		preguntar_por_enter();
 		return;
 	}
 	string nombre;
@@ -171,16 +260,19 @@ void eliminar_videojuego()
 		games->eliminarVideojuego();
 	else
 		games->cancelarEliminacionDeVideojuego();
+	limpiar();
 }
 
 void asigna_puntaje_a_videojuego()
 {
+	limpiar();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 	cout << "Videojuegos: " << endl;
 	ICollection* videojuegos = games->listarVideojuegos();
 	if (videojuegos->isEmpty())
 	{
 		cout << "No hay" << endl;
+		preguntar_por_enter();
 		return;
 	}
 	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
@@ -205,13 +297,16 @@ void asigna_puntaje_a_videojuego()
 	else
 	{
 		cout << "Ese puntaje no existe" << endl;
+		preguntar_por_enter();
 		return;
 	}
 	users->asignarPuntaje(nombre, puntaje);
+	limpiar();
 }
 
 void ver_informacion_de_videojuego()
 {
+	limpiar();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 
@@ -220,6 +315,7 @@ void ver_informacion_de_videojuego()
 	if (videojuegos->isEmpty())
 	{
 		cout << "No hay" << endl;
+		preguntar_por_enter();
 		return;
 	}
 	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
@@ -234,10 +330,12 @@ void ver_informacion_de_videojuego()
 	games->muestraDatosVideojuego();
 	if (dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado()) != nullptr)
 		games->muestraTotalHorasVideojuego();
+	preguntar_por_enter();
 }
 
 void agregar_categoria()
 {
+	limpiar();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 	games->listarNombresCategorias();
 	TipoCategoria tipo_categoria;
@@ -266,10 +364,12 @@ void agregar_categoria()
 		games->darDeAltaNuevaCategoria();
 	else
 		games->cancelarNuevaCategoria();
+	limpiar();
 }
 
 void suscribirse_a_un_videojuego()
 {
+	limpiar();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 
@@ -277,6 +377,7 @@ void suscribirse_a_un_videojuego()
 	if (videojuegos->isEmpty())
 	{
 		cout << "No hay videojuegos a los que suscribirse." << endl;
+		preguntar_por_enter();
 		return;
 	}
 	cout << "Videojuegos a los que ya esta suscrito:" << endl;
@@ -358,6 +459,7 @@ void suscribirse_a_un_videojuego()
 					{
 						cout << "Ya esta suscrito a dicho videojuego y la suscripcion es vitalicia" << endl;
 						users->finalizarsuscripcion();
+						preguntar_por_enter();
 						return;
 					}
 					else
@@ -371,6 +473,7 @@ void suscribirse_a_un_videojuego()
 						else
 						{
 							users->finalizarsuscripcion();
+							preguntar_por_enter();
 							return;
 						}
 					}
@@ -401,7 +504,7 @@ void suscribirse_a_un_videojuego()
 		}
 		else
 		{
-			system("cls");
+			limpiar();
 			continue;
 		}
 	}
@@ -438,7 +541,7 @@ void suscribirse_a_un_videojuego()
 		}
 		else
 		{
-			system("cls");
+			limpiar();
 			continue;
 		}
 	}
@@ -451,11 +554,12 @@ void suscribirse_a_un_videojuego()
 		users->darDeAltaSuscripcion();
 	else
 		users->cancelarSuscripcionAVideojuego();
+	limpiar();
 }
 
 void publicar_videojuego()
 {
-	cout << "Aqui es donde se publica el videojuego" << endl;
+	limpiar();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
 
@@ -520,14 +624,17 @@ void publicar_videojuego()
 				if (cantidad == 0 && j != 2)
 				{
 					cout << "Tiene que seleccionar al menos una categoria!" << endl;
+					preguntar_por_enter();
 					continue;
 				}
 				cantidad = 0;
+				limpiar();
 				break;
 			}
 			else if (static_cast<size_t>(stoi(id)) > i || static_cast<size_t>(stoi(id)) < 1)
 			{
-				cout << "Esa opcion no esta en el rango de categorias que se listaron..." << endl;
+				cout << "Esa opcion no esta en el rango de categorias que se listaron" << endl;
+				preguntar_por_enter();
 				continue;
 			}
 			else
@@ -548,6 +655,7 @@ void publicar_videojuego()
 				if (j == 1) games->agregarCategoriaPlataforma(categoria_seleccionada);
 				if (j == 2) games->agregarCategoria(categoria_seleccionada);
 			}
+			limpiar();
 		}
 	}
 	games->mostrarInformacionIngresadaDelVideojuego();
@@ -558,15 +666,17 @@ void publicar_videojuego()
 		games->darDeAltaVideojuego();
 	else
 		games->cancelarCreacionDeVideojuego();
-
+	limpiar();
 }
 
 void seguir_jugador()
 {
+	limpiar();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	if (users->get_usuario_seleccionado() == nullptr)
 	{
 		cout << "Ningun usuario ha iniciado sesion" << endl;
+		preguntar_por_enter();
 		return;
 	}
 
@@ -580,6 +690,7 @@ void seguir_jugador()
 	else
 	{
 		cout << "El usuario que inicio sesion tiene que ser un jugador para este caso" << endl;
+		preguntar_por_enter();
 		return;
 	}
 
@@ -603,7 +714,8 @@ void seguir_jugador()
 		}
 		if (!hubo_jugadores)
 		{
-			cout << " Ninguno." << endl;
+			cout << "Ninguno." << endl;
+			preguntar_por_enter();
 			return;
 		}
 
@@ -627,31 +739,196 @@ void seguir_jugador()
 			if (desea_cancelar == "s")
 				break;
 			else
+			{
+				limpiar();
 				continue;
+			}
 		}
 		users->seleccionarJugador(nickname_a_seguir);
 		break;
 	}
+	limpiar();
+}
+
+ICollectible* get_cat(string cat)
+{
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	ICollection* categorias = nullptr;
+	for (int i = 0; i < 3; i++)
+	{
+		if (i == 0)
+			categorias = games->listarCategoriaGeneros();
+		else if (i == 1)
+			categorias = games->listarCategoriaPlataforma();
+		else
+			categorias = games->listarRestoCategorias();
+		for (IIterator* it = categorias->iterator(); it->hasNext(); it->next())
+		{
+			CategoriaDeVideojuegos* categoria = dynamic_cast<CategoriaDeVideojuegos*>(it->getCurrent());
+			if (categoria->Getnombre() == cat)
+				return it->getCurrent();
+		}
+	}
+	cout << "esto no deberia pasar" << endl;
+	return nullptr;
 }
 
 void cargar_datos_de_prueba()
 {
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
-	// alta de un desarrollador
-	users->ingresarDatosUsuario("a", "b");
-	users->ingresarempresa("Empresa a");
+	// alta de desarrolladores
+	users->ingresarDatosUsuario("ironhide@mail.com", "123"); // D1
+	users->ingresarempresa("Ironhide Game Studio");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("epic@mail.com", "123"); // D2
+	users->ingresarempresa("Epic Games");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("mojang@mail.com", "123"); // D3
+	users->ingresarempresa("Mojang Studios");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("ea@mail.com", "123"); // D4
+	users->ingresarempresa("EA Sports");
+	users->altaUsuario();
+	// alta de jugadores
+	users->ingresarDatosUsuario("gamer@mail.com", "123"); // J1
+	users->ingresardatos("gamer", "");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("ari@mail.com", "123"); // J2
+	users->ingresardatos("ari", "");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("ibai@mail.com", "123"); // J3
+	users->ingresardatos("ibai", "");
+	users->altaUsuario();
+	users->ingresarDatosUsuario("camila@mail.com", "123"); // J4
+	users->ingresardatos("camila", "");
 	users->altaUsuario();
 
 	// agregando categorias
-	games->agregarNuevaCategoria("A", "A descripcion", TipoCategoria::Genero);
-	games->darDeAltaNuevaCategoria();
-	games->agregarNuevaCategoria("B", "B descripcion", TipoCategoria::Plataforma);
-	games->darDeAltaNuevaCategoria();
+	games->agregarNuevaCategoria("PC", "Computadora personal", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C1
+	games->agregarNuevaCategoria("PS4", "Play Station 4", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C2
+	games->agregarNuevaCategoria("Xbox One", "", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C3
+	games->agregarNuevaCategoria("Deporte", "Juegos de deporte", TipoCategoria::Genero);
+	games->darDeAltaNuevaCategoria(); // C4
+	games->agregarNuevaCategoria("Supervivencia", "Juegos de supervivencia", TipoCategoria::Genero);
+	games->darDeAltaNuevaCategoria(); // C5
+	games->agregarNuevaCategoria("Estrategia", "Juegos de estrategia", TipoCategoria::Genero);
+	games->darDeAltaNuevaCategoria(); // C6
+	games->agregarNuevaCategoria("Teen", "Su contenido está dirigido a jóvenes de 13 años en adelante", TipoCategoria::Otro);
+	games->darDeAltaNuevaCategoria(); // C7
+	games->agregarNuevaCategoria("E", "Su contenido está dirigido para todo público", TipoCategoria::Otro);
+	games->darDeAltaNuevaCategoria(); // C8
+	games->agregarNuevaCategoria("Accion", "Juegos de accion", TipoCategoria::Genero);
+	games->darDeAltaNuevaCategoria(); // C9
+	games->agregarNuevaCategoria("Aventura", "Juegos de aventura", TipoCategoria::Genero);
+	games->darDeAltaNuevaCategoria(); // C10
+	games->agregarNuevaCategoria("Switch", "Nintendo Switch", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C11
+	games->agregarNuevaCategoria("Xbox X", "", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C12
+	games->agregarNuevaCategoria("PS5", "Play Station 5", TipoCategoria::Plataforma);
+	games->darDeAltaNuevaCategoria(); // C13
+
+	// agregando videojuegos
+	users->iniciarSesion("ironhide@mail.com", "123"); // D1
+	DtCostoSuscripcion costo_suscripcion;
+	costo_suscripcion.Setcosto_mensual(1);
+	costo_suscripcion.Setcosto_trimestral(2);
+	costo_suscripcion.Setcosto_anual(7);
+	costo_suscripcion.Setcosto_vitalicia(14);
+	games->agregarVideojuego("KingdomRush", "", dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado())->Getempresa_donde_trabaja(), costo_suscripcion);
+	games->agregarCategoriaPlataforma(get_cat("PC"));
+	games->agregarCategoriaPlataforma(get_cat("PS4"));
+	games->agregarCategoriaGenero(get_cat("Estrategia"));
+	games->agregarCategoria(get_cat("E"));
+	games->darDeAltaVideojuego(); // V1
+
+	users->iniciarSesion("epic@mail.com", "123"); // D2
+	costo_suscripcion.Setcosto_mensual(3);
+	costo_suscripcion.Setcosto_trimestral(8);
+	costo_suscripcion.Setcosto_anual(30);
+	costo_suscripcion.Setcosto_vitalicia(60);
+	games->agregarVideojuego("Fortnite", "", dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado())->Getempresa_donde_trabaja(), costo_suscripcion);
+	games->agregarCategoriaPlataforma(get_cat("PC"));
+	games->agregarCategoriaPlataforma(get_cat("PS4"));
+	games->agregarCategoriaPlataforma(get_cat("Xbox One"));
+	games->agregarCategoriaGenero(get_cat("Supervivencia"));
+	games->agregarCategoria(get_cat("Teen"));
+	games->darDeAltaVideojuego(); // V2
+
+	users->iniciarSesion("mojang@mail.com", "123"); // D3
+	costo_suscripcion.Setcosto_mensual(2);
+	costo_suscripcion.Setcosto_trimestral(5);
+	costo_suscripcion.Setcosto_anual(20);
+	costo_suscripcion.Setcosto_vitalicia(40);
+	games->agregarVideojuego("Minecraft", "", dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado())->Getempresa_donde_trabaja(), costo_suscripcion);
+	games->agregarCategoriaPlataforma(get_cat("PC"));
+	games->agregarCategoriaGenero(get_cat("Supervivencia"));
+	games->agregarCategoria(get_cat("E"));
+	games->darDeAltaVideojuego(); // V3
+
+	users->iniciarSesion("ea@mail.com", "123"); // D4
+	costo_suscripcion.Setcosto_mensual(3);
+	costo_suscripcion.Setcosto_trimestral(8);
+	costo_suscripcion.Setcosto_anual(28);
+	costo_suscripcion.Setcosto_vitalicia(50);
+	games->agregarVideojuego("FIFA 21", "", dynamic_cast<Desarrollador*>(users->get_usuario_seleccionado())->Getempresa_donde_trabaja(), costo_suscripcion);
+	games->agregarCategoriaPlataforma(get_cat("PC"));
+	games->agregarCategoriaPlataforma(get_cat("PS4"));
+	games->agregarCategoriaPlataforma(get_cat("Xbox One"));
+	games->agregarCategoriaGenero(get_cat("Deporte"));
+	games->agregarCategoria(get_cat("E"));
+	games->darDeAltaVideojuego(); // V4
+
+	// suscripciones a videojuegos
+	users->iniciarSesion("gamer@mail.com", "123");
+	users->ingresarNombreVideojuegoParaSuscripcion("KingdomRush");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::PayPal, EnumTipoSuscripcion::Trimestral);
+	users->darDeAltaSuscripcion(DtFechaHora(1, 6, 2021, 9, 0, 0));
+
+	users->ingresarNombreVideojuegoParaSuscripcion("Fortnite");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::Tarjeta, EnumTipoSuscripcion::Trimestral);
+	users->darDeAltaSuscripcion(DtFechaHora(2, 6, 2021, 11, 0, 0));
+
+	users->iniciarSesion("ari@mail.com", "123");
+	users->ingresarNombreVideojuegoParaSuscripcion("Fortnite");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::PayPal, EnumTipoSuscripcion::Mensual);
+	users->darDeAltaSuscripcion(DtFechaHora(4, 6, 2021, 9, 0, 0));
+
+	users->ingresarNombreVideojuegoParaSuscripcion("Minecraft");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::Tarjeta, EnumTipoSuscripcion::Anual);
+	users->darDeAltaSuscripcion(DtFechaHora(11, 6, 2021, 9, 0, 0));
+
+	users->iniciarSesion("ibai@mail.com", "123");
+	users->ingresarNombreVideojuegoParaSuscripcion("Fortnite");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::Tarjeta, EnumTipoSuscripcion::Mensual);
+	users->darDeAltaSuscripcion(DtFechaHora(3, 6, 2021, 7, 0, 0));
+
+	users->ingresarNombreVideojuegoParaSuscripcion("Minecraft");
+	users->ingresarDatosSuscripcion(EnumMetodoPago::Tarjeta, EnumTipoSuscripcion::Vitalicia);
+	users->darDeAltaSuscripcion(DtFechaHora(21, 12, 2020, 15, 0, 0));
+
+	// puntajes a videojuegos
+	users->iniciarSesion("gamer@mail.com", "123");
+	users->asignarPuntaje("KingdomRush", 4);
+	users->asignarPuntaje("Fortnite", 5);
+	users->iniciarSesion("ari@mail.com", "123");
+	users->asignarPuntaje("Fortnite", 5);
+	users->asignarPuntaje("Minecraft", 3);
+
+	// partidas individuales
+	// partidas multijugador
+	// abandona partida multijugador
+
+	limpiar();
 }
 
 bool iniciar_sesion()
 {
+	limpiar();
 	IUsers* users = Fabrica::get_instance()->getIUsers();
 	string email, contra;
 	while (1)
@@ -663,7 +940,7 @@ bool iniciar_sesion()
 		if (users->datosInicioSesionCorrectos(email, contra))
 		{
 			users->iniciarSesion(email, contra);
-			cout << "iniciado correctamente!" << endl;
+			preguntar_por_enter();
 			return true;
 		}
 		else
@@ -673,37 +950,37 @@ bool iniciar_sesion()
 			cout << "desea intentarlo de nuevo? (s/n): ";
 			getline(cin, nuevamente);
 			if (nuevamente != "s")
+			{
+				limpiar();
 				return false;
+			}
 		}
 	}
+	limpiar();
+	return false;
 }
 
 void alta_de_usuario()
 {
-	IUsers* user = Fabrica::get_instance()->getIUsers();//primero creo una instancia llamada user que va a ser igual a una nueva instancia de user esto nose si es que trae todos los usuarios
-	string desa, juga, cancel, confirm;//estas variables las utsaremos para guardar la respuesta del usuario
-    string mail, contra; //declaro las variables que voy a pedir en un principio
-    string empresa, nic, descr; //variables para cuando sea desarrollador o jugador
-    bool existente = false;//esta variable sera usada para confirmar si esta el nick name ya existe en caso que sea jugador
-	//pido al usuario que ingrese las variables y las guardo
-	cout<<"Por favor, ingrese su email";cout<<endl;
-	getline (cin, mail);
-	cout<<"Por favor, ingrese una clave para el usuario";cout<<endl;
-	getline (cin, contra);
-	//una vez consigo los datos llamo a funcion para ingresarlos detallada en el digrama de secuencia
-	//debo utilizar la intancia user creada en un principio
-	user->ingresarDatosUsuario(mail,contra);//los datos son enviados al controlador que los guarda en memoria
-	//continuo con el caso de uso y lo siguiente es preguntar que tipo de usuario sera
+	limpiar();
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	string email, contra;
+	cout << "email del usuario: ";
+	getline(cin, email);
+	cout << "contrasenia del usuario: ";
+	getline(cin, contra);
+	users->ingresarDatosUsuario(email, contra);
 
-	cout<<"Desea crear un usuario desarrollador? s/n";cout<<endl;
-	getline(cin,desa);
-	if (desa=="s"||desa=="S")
-    {
-       cout<<"Por favor ingrese el nombre de la empresa para la cual trabaja";cout<<endl;
-       getline(cin, empresa);
-       user->ingresarempresa(empresa);//envio el nombre d ela empresa al controlador
-    }
-
+	string es_desarrollador;
+	cout << "Sos desarrollador? (s/n): ";
+	getline(cin, es_desarrollador);
+	if (es_desarrollador == "s")
+	{
+		string empresa;
+		cout << "Nombre de la empresa en la que trabaja: ";
+		getline(cin, empresa);
+		users->ingresarempresa(empresa);
+	}
 	else
     {
         do
@@ -760,5 +1037,4 @@ void iniciar_partida()
     IVideojuegos* game = Fabrica::get_instance()->getIVideojuegos();
     cout<<"videojuegos suscriptos: ";cout<<endl;
     game->listarVideojuegosSuscritos();
-
 }

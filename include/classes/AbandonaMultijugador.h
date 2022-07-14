@@ -4,7 +4,7 @@
 #include "Multijugador.h"
 #include "datatypes/DtFechaHora.h"
 
-class AbandonaMultijugador : ICollectible
+class AbandonaMultijugador : public ICollectible
 {
 	public:
 		AbandonaMultijugador(DtFechaHora _fecha, Multijugador* _partida);
