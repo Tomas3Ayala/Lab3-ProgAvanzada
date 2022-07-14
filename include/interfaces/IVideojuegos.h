@@ -9,7 +9,6 @@ class IVideojuegos
 
 		// ver informacion de videojuego
 		virtual ICollection* listarVideojuegos()=0;
-		/*/
 		virtual void seleccionarVideojuego(string nombre)=0;
 		virtual void muestraDatosVideojuego()=0;
 		virtual void muestraTotalHorasVideojuego()=0;
@@ -20,7 +19,7 @@ class IVideojuegos
 		virtual void eliminarVideojuego()=0;
 		virtual void cancelarEliminacionDeVideojuego()=0;
 
-		/*/// publicar videojuego
+		// publicar videojuego
 		virtual void agregarVideojuego(string nombre, string descripcion, string empresa_lo_desarrollo, DtCostoSuscripcion costo)=0;
 		virtual ICollection* listarCategoriaGeneros()=0;
 		virtual void agregarCategoriaGenero(ICollectible* genero)=0; // CategoriaGenero

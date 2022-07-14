@@ -113,17 +113,66 @@ void UsersControllers::finalizarsuscripcion()
 
 void UsersControllers::cancelarSuscripcionAnterior()
 {
-	//
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			Jugador* jugador = dynamic_cast<Jugador*>(usuario_seleccionado);
+			ICollection* suscripciones = jugador->Getsuscripciones();
+			for (IIterator* jt = suscripciones->iterator(); jt->hasNext(); jt->next())
+			{
+				Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(jt->getCurrent());
+				if (suscripcion->Getvideojuego() == videojuego)
+				{
+					Temporal* temporal = dynamic_cast<Temporal*>(suscripcion);
+					temporal->Setfecha_cancelacion(DtFechaHora().tiempo_actual());
+					temporal->Setestado(false);
+					break;
+				}
+			}
+			break;
+		}
+	}
 }
 
 void UsersControllers::ingresarDatosSuscripcion(EnumMetodoPago metodo_pago, EnumTipoSuscripcion tipo)
 {
-	//
+	_metodo_pago = metodo_pago;
+	_tipo_suscripcion = tipo;
 }
 
 void UsersControllers::darDeAltaSuscripcion()
 {
-	//
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			DtCostoSuscripcion costo = videojuego->Getcosto_suscripcion();
+			Jugador* jugador = dynamic_cast<Jugador*>(usuario_seleccionado);
+			ICollection* suscripciones = jugador->Getsuscripciones();
+			switch (_tipo_suscripcion)
+			{
+			case EnumTipoSuscripcion::Mensual:
+				suscripciones->add(new Temporal(costo.Getcosto_mensual(), EnumValidez::UN_MES, _metodo_pago, costo.Getcosto_mensual(), DtFechaHora().tiempo_actual(), videojuego));
+				break;
+			case EnumTipoSuscripcion::Trimestral:
+				suscripciones->add(new Temporal(costo.Getcosto_trimestral(), EnumValidez::TRIMESTRE, _metodo_pago, costo.Getcosto_trimestral(), DtFechaHora().tiempo_actual(), videojuego));
+				break;
+			case EnumTipoSuscripcion::Anual:
+				suscripciones->add(new Temporal(costo.Getcosto_anual(), EnumValidez::ANIO, _metodo_pago, costo.Getcosto_anual(), DtFechaHora().tiempo_actual(), videojuego));
+				break;
+			case EnumTipoSuscripcion::Vitalicia:
+				suscripciones->add(new Vitalicia(costo.Getcosto_vitalicia(), _metodo_pago, costo.Getcosto_vitalicia(), DtFechaHora().tiempo_actual(), videojuego));
+				break;
+			}
+		}
+	}
 }
 
 void UsersControllers::cancelarSuscripcionAVideojuego()
@@ -131,7 +180,28 @@ void UsersControllers::cancelarSuscripcionAVideojuego()
 	//
 }
 
+// asignar puntaje a videojuego
+void UsersControllers::asignarPuntaje(string nombre, int puntaje)
+{
+	IVideojuegos* games = Fabrica::get_instance()->getIVideojuegos();
+	ICollection* videojuegos = games->listarVideojuegos();
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre)
+		{
+			Jugador* jugador = dynamic_cast<Jugador*>(usuario_seleccionado);
+			ICollection* puntajes = jugador->Getpuntajes();
+			puntajes->add(new AsignaPuntaje(puntaje, videojuego));
+		}
+	}
+}
+
 // otro datos
+IDictionary* UsersControllers::listarUsuarios()
+{
+	return usuarios;
+}
 
 vector<string> UsersControllers::listarNicknames()
 {

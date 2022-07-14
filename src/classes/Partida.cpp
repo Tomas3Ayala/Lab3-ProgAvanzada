@@ -2,7 +2,7 @@
 
 Partida::Partida()
 {
-    //ctor
+	comentarios = new Lista;
 }
 
 Partida::~Partida()

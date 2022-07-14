@@ -16,6 +16,7 @@ class IPartidas
 		virtual void agregarTextoMensaje(string texto)=0;
 		virtual void darDeAltaComentario(DtFechaHora fecha_hora)=0;
 		virtual void cancelarRealizarComentario()=0;
+		//*/
 
 		// abandonar partida
 		virtual ICollection* listarPartidasNoFinalizadasMultijugador()=0; // partidas
@@ -25,7 +26,7 @@ class IPartidas
 		virtual vector<string> mostrarNicknamesParticipantes(ICollectible* partida)=0;
 		virtual void confirmarPartidaQueDeseaAbandonar(int identificador)=0;
 
-		// finalizar partida
+		/*/ finalizar partida
 		virtual ICollection* obtenerPartidasNoFinalizadasAlInicio()=0;
 		// virtual DtDatosPartida mostrarDatosPartida(ICollectible* partida)=0;
 		virtual bool mostrarSiEsContinuacion(ICollectible* partida)=0;

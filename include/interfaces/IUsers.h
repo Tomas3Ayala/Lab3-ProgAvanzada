@@ -30,19 +30,14 @@ class IUsers
 		virtual void darDeAltaSuscripcion()=0;
 		virtual void cancelarSuscripcionAVideojuego()=0;
 
-		/*/ asignar puntaje a videojuego
+		// asignar puntaje a videojuego
 		// virtual ICollection* listarVideojuegos()=0;
 		virtual void asignarPuntaje(string nombre, int puntaje)=0;
-
-		// Otros
-		virtual IDictionary* listarNickNameDescripciones()=0;
-		virtual DtCostoSuscripcion listarSuscripciones(string)=0;
-
-		//*/
 
 		// Nueva
 		virtual vector<string> listarNicknames()=0;
 		virtual bool datosInicioSesionCorrectos(string email, string contrasenia)=0;
+		virtual IDictionary* listarUsuarios()=0;
 
 		virtual ICollectible* get_usuario_seleccionado()=0;
 };

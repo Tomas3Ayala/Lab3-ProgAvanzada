@@ -2,6 +2,7 @@
 #include "controllers/UsersControllers.h"
 #include "controllers/PartidasController.h"
 #include "controllers/VideojuegosController.h"
+
 Fabrica* Fabrica::instance = nullptr;
 
 Fabrica* Fabrica::get_instance()

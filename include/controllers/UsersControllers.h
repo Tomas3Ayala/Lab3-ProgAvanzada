@@ -2,7 +2,9 @@
 #define USERSCONTROLLERS_H
 
 #include <interfaces/IUsers.h>
-#include "controllers/VideojuegosController.h"
+#include "Fabrica.h"
+#include "classes/Vitalicia.h"
+#include "classes/Temporal.h"
 #include "classes/Jugador.h"
 #include "classes/Desarrollador.h"
 
@@ -43,6 +45,7 @@ class UsersControllers : public IUsers
 		//DtCostoSuscripcion listarSuscripciones(string);
 		ICollection* listarNombreCategorias();
 
+		IDictionary* listarUsuarios();
 		vector<string> listarNicknames();
 		bool datosInicioSesionCorrectos(string email, string contrasenia);
 
@@ -63,6 +66,10 @@ class UsersControllers : public IUsers
 
 		// suscribirse a videojuego y asignar puntaje a videojuego
 		string nombre_videojuego;
+
+		// suscribirse a videojuego
+		EnumMetodoPago _metodo_pago;
+		EnumTipoSuscripcion _tipo_suscripcion;
 
 };
 

@@ -27,10 +27,10 @@ class Jugador : public Usuario
 	private:
         string nickname;
         string descripcion;
-        ICollection* puntajes;
-        ICollection* partidas_iniciadas;
-        ICollection* partidas_a_las_que_me_uni;
-        ICollection* partidas_abandonadas_multijugador;
+		ICollection* puntajes;
+		ICollection* partidas_iniciadas; // partidas que el jugador ha iniciado, independientemente si las ha finalizado o no
+		ICollection* partidas_a_las_que_me_uni; // partidas(multijugador) actuales a las que el Jugador se ha unido
+        ICollection* partidas_abandonadas_multijugador; // lista de AbandonaMultijugador
 };
 
 #endif // JUGADOR_H

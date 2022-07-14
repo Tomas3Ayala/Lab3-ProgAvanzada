@@ -30,11 +30,242 @@ ICollection* VideojuegosController::listarVideojuegos()
 	return videojuegos;
 }
 
+void VideojuegosController::seleccionarVideojuego(string nombre)
+{
+	nombre_videojuego = nombre;
+}
+
+void VideojuegosController::muestraDatosVideojuego()
+{
+	IDictionary* usuarios = Fabrica::get_instance()->getIUsers()->listarUsuarios();
+	Videojuego* videojuego;
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			int cuanto = 0;
+			float suma_puntaje = 0;
+			// recorre los usuarios
+			for (IIterator* jt = usuarios->getIteratorObj(); jt->hasNext(); jt->next())
+			{
+				Jugador* jugador = dynamic_cast<Jugador*>(jt->getCurrent());
+				if (jugador) // los usuarios son jugadores
+				{
+					ICollection* puntajes = jugador->Getpuntajes(); // obtiene los puntajes que hecho el jugador
+					for (IIterator* kt = puntajes->iterator(); kt->hasNext(); kt->next()) // recorre los puntajes asignados pro el jugador
+					{
+						AsignaPuntaje* asigna_puntaje = dynamic_cast<AsignaPuntaje*>(kt->getCurrent());
+						if (asigna_puntaje->Getvideojuego() == videojuego) // chequea que el videojuego al que le asigna el puntaje es el seleccionado
+						{
+							suma_puntaje += asigna_puntaje->Getpuntaje(); // suma el puntaje
+							cuanto++; // aumenta el contador de puntajes
+						}
+					}
+				}
+			}
+			if (cuanto == 0)
+				cuanto = 1; // si no hay puntajes se asigna 0 al puntaje promedio
+			float puntaje_promedio = suma_puntaje / cuanto; // divide la suma de puntajes por la cantidad que se han hecho
+			videojuego->Setpromedio_puntaje(puntaje_promedio);
+			cout << "Descripcion: " << videojuego->Getdescripcion() << endl;
+			cout << "Costo de suscripcion: " << endl;
+			cout << "  Costo mensual: " << videojuego->Getcosto_suscripcion().Getcosto_mensual() << endl;
+			cout << "  Costo trimestral: " << videojuego->Getcosto_suscripcion().Getcosto_trimestral() << endl;
+			cout << "  Costo anual: " << videojuego->Getcosto_suscripcion().Getcosto_anual() << endl;
+			cout << "  Costo vitalicia: " << videojuego->Getcosto_suscripcion().Getcosto_vitalicia() << endl;
+			cout << "Puntaje promedio: " << videojuego->Getpromedio_puntaje() << endl;
+			cout << "Categorias a las que pertence:" << endl;
+			ICollection* categorias = videojuego->Getcategorias_de_videojuegos();
+			for (IIterator* jt = categorias->iterator(); jt->hasNext(); jt->next())
+			{
+				CategoriaDeVideojuegos* categoria = dynamic_cast<CategoriaDeVideojuegos*>(jt->getCurrent());
+				cout << "  " << categoria->Getnombre() << endl;
+			}
+			cout << "Empresa desarrolladora: " << videojuego->Getempresa_desarrollo() << endl;
+			break;
+		}
+	}
+}
+
+void VideojuegosController::muestraTotalHorasVideojuego()
+{
+	Videojuego* videojuego;
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		videojuego = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (videojuego->Getnombre() == nombre_videojuego)
+		{
+			ICollection* partidas = videojuego->Getpartidas();
+			int total_horas = 0;
+			for (IIterator* jt = partidas->iterator(); jt->hasNext(); jt->next())
+			{
+				Partida* partida = dynamic_cast<Partida*>(jt->getCurrent());
+				if (partida->Getfecha_hora_comienzo().es_cero())
+					total_horas += DtFechaHora().tiempo_actual().restar(partida->Getfecha_hora_comienzo()).en_horas();
+				else
+					total_horas += partida->Getfecha_hora_comienzo().sumar(partida->Getduracion_finalizacion()).en_horas();
+			}
+			videojuego->Settotal_horas_videojuego(total_horas);
+			cout << "Total de horas jugadas: " << videojuego->Gettotal_horas_videojuego() << endl;
+		}
+	}
+}
+
+// eliminar videojuego
+ICollection* VideojuegosController::listarVideojuegosPublicadosNoFinalizados()
+{
+	IUsers* users = Fabrica::get_instance()->getIUsers();
+	Usuario* usuario = dynamic_cast<Usuario*>(users->get_usuario_seleccionado());
+	string email = usuario->Getemail();
+	ICollection* finalizados = new Lista;
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* vid = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (vid->Getemail_desarrollador() == email)
+		{
+			bool todas_las_partidas_finalizadas = true;
+			ICollection* partidas = vid->Getpartidas();
+			for (IIterator* jt = partidas->iterator(); jt->hasNext(); jt->next())
+			{
+				Partida* partida = dynamic_cast<Partida*>(jt->getCurrent());
+				if (partida->Getduracion_finalizacion().es_cero())
+				{
+					todas_las_partidas_finalizadas = false;
+					break;
+				}
+			}
+			if (todas_las_partidas_finalizadas)
+				finalizados->add(vid);
+		}
+	}
+	return finalizados;
+}
+
+void VideojuegosController::eliminarVideojuego() // elimina el videojuego que lleva el nombre nombre_videojuego
+{
+	for (IIterator* it = videojuegos->iterator(); it->hasNext(); it->next())
+	{
+		Videojuego* vid = dynamic_cast<Videojuego*>(it->getCurrent());
+		if (vid->Getnombre() == nombre_videojuego)
+		{
+			ICollection* partidas_vid = vid->Getpartidas();
+
+			IUsers* users = Fabrica::get_instance()->getIUsers();
+			IDictionary* usuarios = users->listarUsuarios();
+			for (IIterator* jt = usuarios->getIteratorObj(); jt->hasNext(); jt->next())
+			{
+				Jugador* jugador = dynamic_cast<Jugador*>(jt->getCurrent());
+				if (jugador)
+				{
+					bool se_encontro_una;
+					// eliminando referencias de partidas en jugador
+					ICollection* partidas = nullptr;
+					for (int i = 0; i < 2; i++)
+					{
+						if (i == 0)
+							partidas = jugador->Getpartidas_a_las_que_me_uni();
+						else
+							partidas = jugador->Getpartidas_iniciadas();
+						do
+						{
+							se_encontro_una = false;
+							for (IIterator* kt = partidas->iterator(); kt->hasNext(); kt->next()) // recorremos las partidas
+							{
+								Partida* partida = dynamic_cast<Partida*>(kt->getCurrent());
+								for (IIterator* lt = partidas_vid->iterator(); lt->hasNext(); lt->next()) // recorremos las partidas dentro del videojuego
+								{
+									Partida* partida_vid = dynamic_cast<Partida*>(lt->getCurrent());
+									if (partida_vid == partida) // chequea si la partida del videojuego es la que esta guardada en partidas
+									{
+										se_encontro_una = true;
+										partidas->remove(partida);
+										break;
+									}
+								}
+								if (se_encontro_una)
+									break;
+							}
+						} while(se_encontro_una); // siempre y cuando halla alguna partida encontrada entonces se repite la eliminacion por si hay otra
+					}
+
+					// eliminando suscripciones al videojuego
+					ICollection* suscripciones = jugador->Getsuscripciones();
+					do
+					{
+						se_encontro_una = false;
+						for (IIterator* kt = suscripciones->iterator(); kt->hasNext(); kt->next())
+						{
+							Suscripcion* suscripcion = dynamic_cast<Suscripcion*>(kt->getCurrent());
+							if (suscripcion->Getvideojuego() == vid)
+							{
+								suscripciones->remove(suscripcion);
+								se_encontro_una = true;
+								break;
+							}
+						}
+					} while(se_encontro_una);
+
+					// eliminando asigna puntaje
+					ICollection* puntajes_asignados = jugador->Getpuntajes();
+					do
+					{
+						se_encontro_una = false;
+						for (IIterator* kt = puntajes_asignados->iterator(); kt->hasNext(); kt->next())
+						{
+							AsignaPuntaje* asigna_puntaje = dynamic_cast<AsignaPuntaje*>(kt->getCurrent());
+							if (asigna_puntaje->Getvideojuego() == vid)
+							{
+								puntajes_asignados->remove(asigna_puntaje);
+								se_encontro_una = true;
+								break;
+							}
+						}
+					} while(se_encontro_una);
+
+					// eliminando abandona multijugador
+					ICollection* multijugadores_abandonados = jugador->Getpartidas_abandonadas_multijugador();
+					do
+					{
+						se_encontro_una = false;
+						for (IIterator* kt = multijugadores_abandonados->iterator(); kt->hasNext(); kt->next()) // recorremos los AbandonaMultijugador
+						{
+							AbandonaMultijugador* abandona = dynamic_cast<AbandonaMultijugador*>(kt->getCurrent());
+							Partida* partida = dynamic_cast<Partida*>(abandona->Getpartida());
+							for (IIterator* lt = partidas_vid->iterator(); lt->hasNext(); lt->next()) // recorremos las partidas dentro del videojuego
+							{
+								Partida* partida_vid = dynamic_cast<Partida*>(lt->getCurrent());
+								if (partida_vid == partida) // chequea si la partida del videojuego es la que esta guardada en en el multijugador abandona
+								{
+									se_encontro_una = true;
+									partidas->remove(partida);
+									break;
+								}
+							}
+							if (se_encontro_una)
+								break;
+						}
+					} while(se_encontro_una); // siempre y cuando halla alguna partida encontrada entonces se repite la eliminacion por si hay otra
+				}
+			}
+			// elimina finalmente el videojuego con todas sus partidas y los comentarios de esta
+			videojuegos->remove(vid);
+			break;
+		}
+	}
+}
+
+void VideojuegosController::cancelarEliminacionDeVideojuego()
+{
+	nombre_videojuego = "";
+}
+
 // publicar videojuego
 void VideojuegosController::agregarVideojuego(string nombre, string descripcion, string empresa_lo_desarrollo, DtCostoSuscripcion costo)
 {
 	nombre_videojuego = nombre;
 	_descripcion = descripcion;
+	_email_desarrollador = dynamic_cast<Usuario*>(Fabrica::get_instance()->getIUsers()->get_usuario_seleccionado())->Getemail();
 	_empresa_lo_desarrollo = empresa_lo_desarrollo;
 	costo_de_suscripcion = costo;
 	categorias_de_un_videojuego = new Lista;
@@ -122,7 +353,7 @@ void VideojuegosController::mostrarInformacionIngresadaDelVideojuego()
 
 void VideojuegosController::darDeAltaVideojuego()
 {
-	videojuegos->add(new Videojuego(nombre_videojuego, _descripcion, _empresa_lo_desarrollo, costo_de_suscripcion, categorias_de_un_videojuego));
+	videojuegos->add(new Videojuego(nombre_videojuego, _descripcion, _email_desarrollador, _empresa_lo_desarrollo, costo_de_suscripcion, categorias_de_un_videojuego));
 	categorias_de_un_videojuego = nullptr;
 }
 
