@@ -424,10 +424,11 @@
 1655861753 c:\users\59892\documents\github\lab3-progavanzada\include\categoriadevideojuegos.h
 	"StandardHeaders.h"
 
-1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\standardheaders.h
+1657827667 c:\users\59892\documents\github\lab3-progavanzada\include\standardheaders.h
 	<iostream>
 	<vector>
 	<string>
+	<time.h>
 	"../ColeccionesG/ICollection.h"
 	"../ColeccionesG/ListaDicc.h"
 	"../ColeccionesG/Lista.h"
@@ -893,10 +894,10 @@
 	"datatypes/DtFechaHora.h"
 	"classes/Videojuego.h"
 
-1656634916 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtfechahora.h
+1657833011 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtfechahora.h
 	"StandardHeaders.h"
 
-1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\videojuego.h
+1657827667 c:\users\59892\documents\github\lab3-progavanzada\include\classes\videojuego.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\datatypes\dtcostosuscripcion.h
@@ -908,13 +909,13 @@
 1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\individual.h
 	<classes/Partida.h>
 
-1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\partida.h
+1657833011 c:\users\59892\documents\github\lab3-progavanzada\include\classes\partida.h
 	"datatypes/DtFechaHora.h"
 
 1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\multijugador.cpp
 	"classes/Multijugador.h"
 
-1656634915 c:\users\59892\documents\github\lab3-progavanzada\include\classes\multijugador.h
+1657833011 c:\users\59892\documents\github\lab3-progavanzada\include\classes\multijugador.h
 	<classes/Partida.h>
 
 1656634916 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\partida.cpp
@@ -960,7 +961,7 @@
 	<interfaces/IPartidas.h>
 	"datatypes/DtDatosPartida.h"
 
-1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ipartidas.h
+1657833011 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ipartidas.h
 	"datatypes/DtFechaHora.h"
 	"datatypes/DtDatosPartida.h"
 
@@ -1005,8 +1006,9 @@
 	"classes/Jugador.h"
 	"classes/Desarrollador.h"
 
-1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\iusers.h
+1657827667 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\iusers.h
 	"datatypes/DtCostoSuscripcion.h"
+	"datatypes/DtFechaHora.h"
 
 1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\controllers\videojuegoscontroller.h
 	<interfaces/IVideojuegos.h>
@@ -1015,7 +1017,7 @@
 	<classes/NuevaPlataforma.h>
 	<classes/NuevaCategoria.h>
 
-1657752510 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
+1657833011 c:\users\59892\documents\github\lab3-progavanzada\include\interfaces\ivideojuegos.h
 	"datatypes/DtCostoSuscripcion.h"
 
 1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\nuevogenero.h
@@ -1027,7 +1029,7 @@
 1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\nuevacategoria.h
 	"CategoriaDeVideojuegos.h"
 
-1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\jugador.h
+1657827667 c:\users\59892\documents\github\lab3-progavanzada\include\classes\jugador.h
 	<classes/Usuario.h>
 	<classes/AsignaPuntaje.h>
 
@@ -1047,7 +1049,7 @@
 1657578975 source:c:\users\59892\documents\github\lab3-progavanzada\src\classes\abandonamultijugador.cpp
 	"AbandonaMultijugador.h"
 
-1657578975 c:\users\59892\documents\github\lab3-progavanzada\include\classes\abandonamultijugador.h
+1657827667 c:\users\59892\documents\github\lab3-progavanzada\include\classes\abandonamultijugador.h
 	"StandardHeaders.h"
 	"Multijugador.h"
 	"datatypes/DtFechaHora.h"
