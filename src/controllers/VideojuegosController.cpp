@@ -102,9 +102,15 @@ void VideojuegosController::muestraTotalHorasVideojuego()
 			{
 				Partida* partida = dynamic_cast<Partida*>(jt->getCurrent());
 				if (partida->Getfecha_hora_comienzo().es_cero())
-					total_horas += DtFechaHora().tiempo_actual().restar(partida->Getfecha_hora_comienzo()).en_horas();
+				{
+					//cout << "1. Restando: " << DtFechaHora().tiempo_actual().as_string() << " con " << partida->Getfecha_hora_comienzo().as_string() << endl;
+					total_horas += DtFechaHora().tiempo_actual().restar(partida->Getfecha_hora_comienzo()).to_segundos();
+				}
 				else
-					total_horas += partida->Getfecha_hora_comienzo().sumar(partida->Getduracion_finalizacion()).en_horas();
+				{
+					//cout << "2. Restando: " << partida->Getfecha_hora_comienzo().as_string() << " con " << partida->Getduracion_finalizacion().as_string() << endl;
+					total_horas += partida->Getduracion_finalizacion().en_horas();
+				}
 			}
 			videojuego->Settotal_horas_videojuego(total_horas);
 			cout << "Total de horas jugadas: " << videojuego->Gettotal_horas_videojuego() << endl;

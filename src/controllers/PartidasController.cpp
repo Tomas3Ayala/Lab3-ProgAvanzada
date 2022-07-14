@@ -376,7 +376,7 @@ void PartidasController::darDeAltaNuevaPartida(DtFechaHora __opcional)
 		for (IIterator* it = participantes->iterator(); it->hasNext(); it->next())
 			parti++;
 		Multijugador* multijugador = new Multijugador(parti, es_transmitida_en_vivo_multijugador, __opcional);
-		cout << jugador->Getnickname() << ", con " << parti << endl;
+		//cout << jugador->Getnickname() << ", con " << parti << endl;
 		for (IIterator* it = participantes->iterator(); it->hasNext(); it->next())
 		{
 			Jugador* jugador = dynamic_cast<Jugador*>(it->getCurrent());
